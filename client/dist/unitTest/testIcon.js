@@ -20,6 +20,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }return s;
 })({ 1: [function (require, module, exports) {
         var Util = require('../Util/Util'),
+            _convert = require('./_convert'),
+            _delete2 = require('./_delete'),
             _init2 = require('./_init'),
             _init_style2 = require('./_init_style'),
             _init_event2 = require('./_init_event'),
@@ -28,7 +30,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _handle_touchMove2 = require('./_handle_touchMove'),
             _move2 = require('./_move'),
             _scale2 = require('./_scale'),
-            _rotate2 = require('./_rotate');
+            _rotate2 = require('./_rotate'),
+            _drawCanvas2 = require('./_drawCanvas');
 
         var ICON_STYLE = {
             'position': 'absolute',
@@ -51,7 +54,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             'display': 'none'
         };
 
-        var MAX_SIZE = 200;
+        var MAX_SIZE = 200,
+            RATIO = 2;
 
         var Icon_Item = function () {
             function Icon_Item(imgSrc, container, option) {
@@ -77,6 +81,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 this._rotation = 0;
                 this._size = [this._iconStyle.width, this._iconStyle.height];
                 this._maxSize = MAX_SIZE;
+                this._ratio = RATIO;
 
                 this._touchCb = function () {
                     console.log('touch cb');
@@ -94,22 +99,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 this._init_option(option);
                 this._init();
             }
-            //getter and setter
+            /*-------------------
+                getter and setter
+            --------------------*/
 
 
             _createClass(Icon_Item, [{
                 key: "convert",
 
-                //public
+                /*-----------------
+                    public method
+                ------------------*/
                 value: function convert() {
-                    return _convert();
+                    return _convert.call(this);
                 }
             }, {
                 key: "active",
                 value: function active() {
-                    this._handle_touch();
+                    this._handle_touchEnd();
                 }
-                //private
+                /*-----------------
+                    private method
+                ------------------*/
 
             }, {
                 key: "_init",
@@ -162,6 +173,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     _scale2.call(this, dis);
                 }
             }, {
+                key: "_delete",
+                value: function _delete() {
+                    _delete2.call(this);
+                }
+            }, {
+                key: "_drawCanvas",
+                value: function _drawCanvas() {
+                    _drawCanvas2.call(this);
+                }
+            }, {
                 key: "touchCb",
                 set: function set(cb) {
                     this._touchCb = cb;
@@ -181,15 +202,64 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 set: function set(cb) {
                     this._rotateCb = cb;
                 }
+            }, {
+                key: "base64",
+                get: function get() {
+                    return this.convert();
+                }
             }]);
 
             return Icon_Item;
         }();
 
         module.exports = Icon_Item;
-    }, { "../Util/Util": 11, "./_handle_touchEnd": 2, "./_handle_touchMove": 3, "./_init": 4, "./_init_btn": 5, "./_init_event": 6, "./_init_style": 7, "./_move": 8, "./_rotate": 9, "./_scale": 10 }], 2: [function (require, module, exports) {
+    }, { "../Util/Util": 14, "./_convert": 2, "./_delete": 3, "./_drawCanvas": 4, "./_handle_touchEnd": 5, "./_handle_touchMove": 6, "./_init": 7, "./_init_btn": 8, "./_init_event": 9, "./_init_style": 10, "./_move": 11, "./_rotate": 12, "./_scale": 13 }], 2: [function (require, module, exports) {
+        function _convert() {
+            var containerClientRect = this._container.getBoundingClientRect();
+
+            this._canvas.width = containerClientRect.width * this._ratio;
+            this._canvas.height = containerClientRect.height * this._ratio;
+            this._canvas.style.width = '100%';
+
+            this._drawCanvas();
+
+            return this._canvas.toDataURL();
+        };
+
+        module.exports = _convert;
+    }, {}], 3: [function (require, module, exports) {
+        function _delete() {
+            var _this = this;
+
+            this._dom.remove();
+            Object.keys(this).forEach(function (key) {
+                _this[key] = null;
+            });
+        };
+
+        module.exports = _delete;
+    }, {}], 4: [function (require, module, exports) {
+        function _drawCanvas() {
+            var ctx = this._canvas.getContext("2d"),
+                width = this._size[0] * this._ratio,
+                height = this._size[1] * this._ratio,
+                x = this._dom.offsetLeft * this._ratio + width / 2,
+                y = this._dom.offsetTop * this._ratio + height / 2,
+                rad = this._rotation * (Math.PI / 180);
+
+            ctx.translate(x, y);
+            ctx.rotate(rad);
+            ctx.drawImage(this._imgEle, -width / 2, -height / 2, width, height);
+            ctx.rotate(-rad);
+            ctx.translate(-x, -y);
+        };
+
+        module.exports = _drawCanvas;
+    }, {}], 5: [function (require, module, exports) {
         function _handle_touch(evt) {
             var btnList = [this._rotateBtn, this._closeBtn, this._scaleBtn];
+
+            if (evt.target === this._closeBtn) return this._delete();
 
             if (this._isActive && !this._isMove) {
                 this._isActive = false;
@@ -209,7 +279,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         };
 
         module.exports = _handle_touch;
-    }, {}], 3: [function (require, module, exports) {
+    }, {}], 6: [function (require, module, exports) {
         function _handle_move(evt) {
 
             evt.preventDefault();
@@ -225,7 +295,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             if (evt.target === this._dom) {
                 this._move(dis);
-            } else if (evt.target === this._closeBtn) {} else if (evt.target === this._scaleBtn) {
+            } else if (evt.target === this._scaleBtn) {
                 this._scale(dis);
             } else if (evt.target === this._rotateBtn) {
                 this._rotate(nowPos, dis);
@@ -235,27 +305,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         };
 
         module.exports = _handle_move;
-    }, {}], 4: [function (require, module, exports) {
+    }, {}], 7: [function (require, module, exports) {
         function _init() {
-            var _this = this;
+            var _this2 = this;
 
             var img = new Image(+this._iconStyle.width + 'px', +this._iconStyle.height + 'px');
 
             img.onload = function () {
-                _this._imgEle = img;
+                _this2._imgEle = img;
 
-                _this._init_style();
+                _this2._init_style();
 
-                _this._init_event();
+                _this2._init_event();
 
-                _this._container.appendChild(_this._dom);
+                _this2._container.appendChild(_this2._dom);
             };
 
             img.src = this._imgSrc;
         }
 
         module.exports = _init;
-    }, {}], 5: [function (require, module, exports) {
+    }, {}], 8: [function (require, module, exports) {
         function _init_btn(iconWidth, iconHeight) {
             var btnList = [this._rotateBtn, this._closeBtn, this._scaleBtn];
 
@@ -268,18 +338,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         };
 
         module.exports = _init_btn;
-    }, {}], 6: [function (require, module, exports) {
+    }, {}], 9: [function (require, module, exports) {
         function _init_event() {
             this._dom.addEventListener('touchend', this._handle_touchEnd.bind(this), false);
             this._dom.addEventListener('touchmove', this._handle_touchMove.bind(this), false);
         };
 
         module.exports = _init_event;
-    }, {}], 7: [function (require, module, exports) {
+    }, {}], 10: [function (require, module, exports) {
         function _init_style() {
-            var BTN_POSITION = [[-this._btnStyle.width / 2, -this._btnStyle.height / 2], [this._iconStyle.width - this._btnStyle.width / 2, -this._btnStyle.height / 2], [this._iconStyle.width - this._btnStyle.width / 2, this._iconStyle.height - this._btnStyle.height / 2]];
-
-            var btnList = [this._rotateBtn, this._closeBtn, this._scaleBtn];
 
             var setStyle = function setStyle(ele, style) {
                 for (var i in style) {
@@ -299,27 +366,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this._dom.style['background-image'] = "url(" + this._imgSrc + ")";
             this._dom.style['transform-origin'] = 'center';
 
-            // BTN_POSITION.forEach((position,index)=>{
-            //     btnList[index].style.left = `${position[0]}px`;
-            //     btnList[index].style.top = `${position[1]}px`;
-            // });
             this._init_btn(this._iconStyle.width, this._iconStyle.height);
         };
 
         module.exports = _init_style;
-    }, {}], 8: [function (require, module, exports) {
+    }, {}], 11: [function (require, module, exports) {
         function _move(dis) {
             this._dom.style.left = this._dom.offsetLeft + dis[0];
             this._dom.style.top = this._dom.offsetTop + dis[1];
         };
 
         module.exports = _move;
-    }, {}], 9: [function (require, module, exports) {
+    }, {}], 12: [function (require, module, exports) {
         var glMatrix = require('gl-matrix');
         var TAG = ['transform', '-ms-transform', '-webkit-transform'];
 
         function _rotate(nowPos, dis) {
-            var _this2 = this;
+            var _this3 = this;
 
             var now_vec = glMatrix.vec2.fromValues(nowPos[0], nowPos[1]),
                 old_vec = glMatrix.vec2.fromValues(this._touch_screenPos[0], this._touch_screenPos[1]),
@@ -357,12 +420,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             if (this._rotation < 0) this._rotation = 360 + this._rotation;
 
             TAG.forEach(function (tag) {
-                _this2._dom.style[tag] = "rotate(" + Math.floor(_this2._rotation) + "deg)";
+                _this3._dom.style[tag] = "rotate(" + Math.floor(_this3._rotation) + "deg)";
             });
         };
 
         module.exports = _rotate;
-    }, { "gl-matrix": 14 }], 10: [function (require, module, exports) {
+    }, { "gl-matrix": 17 }], 13: [function (require, module, exports) {
         var glMatrix = require('gl-matrix');
 
         function _scale(dis) {
@@ -397,7 +460,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         };
 
         module.exports = _scale;
-    }, { "gl-matrix": 14 }], 11: [function (require, module, exports) {
+    }, { "gl-matrix": 17 }], 14: [function (require, module, exports) {
         var _init_option = require('./_init_option');
 
         var Util = function () {
@@ -416,7 +479,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }();
 
         module.exports = Util;
-    }, { "./_init_option": 12 }], 12: [function (require, module, exports) {
+    }, { "./_init_option": 15 }], 15: [function (require, module, exports) {
         function _init_options(options) {
             for (var i in options) {
                 if (i in this) this[i] = options[i];
@@ -426,14 +489,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         };
 
         module.exports = _init_options;
-    }, {}], 13: [function (require, module, exports) {
+    }, {}], 16: [function (require, module, exports) {
         var Icon = require('../Icon_Item/Icon_Item');
 
         var container = document.querySelector('#container'),
+            img = document.querySelector('#canvas'),
             icon = new Icon('./images/icon.png', container);
 
+        document.body.style.margin = 0;
+        container.style.width = "100%";
+        container.style.height = "50%";
+        container.style.position = 'absolute';
+        container.style.background = 'rgba(1,0,0,.7)';
+
+        img.style.width = '100%';
+        img.style.height = '50%';
+        img.style.position = 'absolute';
+        img.style.top = '50%';
+
         window.icon = icon;
-    }, { "../Icon_Item/Icon_Item": 1 }], 14: [function (require, module, exports) {
+
+        window.convert = function () {
+            img.src = icon.convert();
+        };
+    }, { "../Icon_Item/Icon_Item": 1 }], 17: [function (require, module, exports) {
 
         /*!
         @fileoverview gl-matrix - High performance matrix and vector operations
@@ -714,4 +793,4 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     /******/ })
             );
         });
-    }, {}] }, {}, [13]);
+    }, {}] }, {}, [16]);

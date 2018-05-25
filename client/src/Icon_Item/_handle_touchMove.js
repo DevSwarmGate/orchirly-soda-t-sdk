@@ -15,8 +15,6 @@ function _handle_move(evt){
 
     if(evt.target === this._dom){
         this._move(dis);
-    }else if(evt.target === this._closeBtn){
-
     }else if(evt.target === this._scaleBtn){
         this._scale(dis);
     }else if(evt.target === this._rotateBtn){

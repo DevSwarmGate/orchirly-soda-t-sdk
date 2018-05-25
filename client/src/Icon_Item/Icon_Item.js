@@ -1,4 +1,6 @@
 const   Util = require('../Util/Util'),
+        _convert = require('./_convert'),
+        _delete = require('./_delete'),
         _init = require('./_init'),
         _init_style = require('./_init_style'),
         _init_event = require('./_init_event'),
@@ -7,7 +9,8 @@ const   Util = require('../Util/Util'),
         _handle_touchMove = require('./_handle_touchMove'),
         _move = require('./_move'),
         _scale= require('./_scale'),
-        _rotate = require('./_rotate');
+        _rotate = require('./_rotate'),
+        _drawCanvas = require('./_drawCanvas');
     
 const   ICON_STYLE ={
     'position':'absolute',
@@ -30,7 +33,8 @@ const   BTN_STYLE ={
     'display':'none'
 };
 
-const  MAX_SIZE = 200;
+const   MAX_SIZE = 200,
+        RATIO = 2;
 
 class Icon_Item{
     constructor(imgSrc,container,option){
@@ -54,6 +58,7 @@ class Icon_Item{
         this._rotation = 0;
         this._size = [this._iconStyle.width,this._iconStyle.height];
         this._maxSize = MAX_SIZE;
+        this._ratio = RATIO;
 
         this._touchCb =()=>{console.log('touch cb');}
         this._moveCb = ()=>{console.log('move cb');}
@@ -63,15 +68,23 @@ class Icon_Item{
         this._init_option(option);
         this._init();
     }
-    //getter and setter
+    /*-------------------
+        getter and setter
+    --------------------*/
     set touchCb(cb){this._touchCb = cb;}
     set moveCb(cb){this._moveCb = cb;}
     set scaleCb(cb){this._scaleCb = cb;}
     set rotateCb(cb){this._rotateCb = cb;}
-    //public
-    convert(){return _convert();}
-    active(){this._handle_touch();}
-    //private
+
+    get base64(){return this.convert();}
+    /*-----------------
+        public method
+    ------------------*/
+    convert(){return _convert.call(this);}
+    active(){this._handle_touchEnd();}
+    /*-----------------
+        private method
+    ------------------*/
     _init(){_init.call(this);}
     _init_btn(width,height){_init_btn.call(this,width,height);}
     _init_style(){_init_style.call(this);}
@@ -83,6 +96,9 @@ class Icon_Item{
     _move(dis){_move.call(this,dis);}
     _rotate(nowPos,dis){_rotate.call(this,nowPos,dis);}
     _scale(dis){_scale.call(this,dis);}
+    _delete(){_delete.call(this);}
+
+    _drawCanvas(){_drawCanvas.call(this);}
 }
 
 module.exports = Icon_Item;
