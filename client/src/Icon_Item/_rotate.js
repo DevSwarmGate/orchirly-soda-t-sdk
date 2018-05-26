@@ -45,6 +45,8 @@ function _rotate(nowPos,dis){
     TAG.forEach(tag=>{
         this._dom.style[tag] = `rotate(${Math.floor(this._rotation)}deg)`;
     });
+
+    this._rotateCb(this);
 };
 
 module.exports = _rotate;

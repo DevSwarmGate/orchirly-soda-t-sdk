@@ -8,6 +8,9 @@ let buildSystem = new BuildSystem(
         {
             "testIcon":{
                 ".js":"unitTest/testIcon.js"
+            },
+            "testCanvas":{
+                ".js":"unitTest/testCanvas.js"
             }
         }
     );

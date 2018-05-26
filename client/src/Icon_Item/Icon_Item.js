@@ -1,4 +1,6 @@
 const   Util = require('../Util/Util'),
+        _active = require('./_active'),
+        _deactive = require('./_deactive'),
         _convert = require('./_convert'),
         _delete = require('./_delete'),
         _init = require('./_init'),
@@ -19,7 +21,7 @@ const   ICON_STYLE ={
     'background-position':'0% 0%',
     'background-size':'100% 100%',
     'background-repeat':'no-repeat',
-    'background-color':'rgba(1,0,0,0.7)'
+    //'background-color':'rgba(1,0,0,0.7)'
 };
 
 const   BTN_STYLE ={
@@ -75,16 +77,19 @@ class Icon_Item{
     set moveCb(cb){this._moveCb = cb;}
     set scaleCb(cb){this._scaleCb = cb;}
     set rotateCb(cb){this._rotateCb = cb;}
+    set active(bool){if(bool){this._active()}else{this._deactive()};}
+    get active(){return this._isActive;}
 
     get base64(){return this.convert();}
     /*-----------------
         public method
     ------------------*/
     convert(){return _convert.call(this);}
-    active(){this._handle_touchEnd();}
     /*-----------------
         private method
     ------------------*/
+    _active(){_active.call(this);}
+    _deactive(){_deactive.call(this);}
     _init(){_init.call(this);}
     _init_btn(width,height){_init_btn.call(this,width,height);}
     _init_style(){_init_style.call(this);}

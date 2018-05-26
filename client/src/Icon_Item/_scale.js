@@ -36,6 +36,7 @@ function _scale(dis){
     this._dom.style.width = this._size[0]+'px';
     this._dom.style.height= this._size[1]+'px';
     this._init_btn(this._size[0],this._size[1]);
+    this._scaleCb(this);
 };
 
 module.exports = _scale;
