@@ -1,8 +1,10 @@
-const Canvas_Item = require('../Canvas_Item/Canvas_Item');
+const   Canvas_Item = require('../Canvas_Item/Canvas_Item'),
+        Sdk = require('../Sdk');
 
 let container = document.querySelector('#container'),
     img = document.querySelector('#canvas'),
-    item = new Canvas_Item(container);
+    sdk = new Sdk(),
+    item = sdk.createCanvas(container);
 
 
 document.body.style.margin = 0;

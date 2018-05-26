@@ -2,7 +2,7 @@
   "name": "orchirly-soda-t-sdk",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "client/src/Sdk.js",
   "dependencies": {
     "dev-env-build-system": "git+https://github.com/jefftong/dev-env-build-system.git",
     "express": "^4.16.2",

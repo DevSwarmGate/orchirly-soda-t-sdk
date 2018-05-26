@@ -149,7 +149,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }();
 
         module.exports = Canvas_Item;
-    }, { "../Util/Util": 28, "./_appendIcon": 2, "./_bgImg_base64": 3, "./_convert": 4, "./_drawCanvas": 5, "./_handle_icon_select": 6, "./_init": 7, "./_init_eleStyle": 8, "./_loadImg": 9, "./_loadingGif_base64": 10, "./_logoImg_base64": 11, "./_setEle": 12 }], 2: [function (require, module, exports) {
+    }, { "../Util/Util": 29, "./_appendIcon": 2, "./_bgImg_base64": 3, "./_convert": 4, "./_drawCanvas": 5, "./_handle_icon_select": 6, "./_init": 7, "./_init_eleStyle": 8, "./_loadImg": 9, "./_loadingGif_base64": 10, "./_logoImg_base64": 11, "./_setEle": 12 }], 2: [function (require, module, exports) {
         var Icon = require('../Icon_Item/Icon_Item');
 
         function _appendIcon(src, option) {
@@ -231,7 +231,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {}], 6: [function (require, module, exports) {
         function _handle_icon_select(now_icon) {
             this._icons.forEach(function (icon) {
-                console.log(icon === now_icon);
                 if (icon !== now_icon && icon.active) icon.active = false;
             });
         };
@@ -559,7 +558,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }();
 
         module.exports = Icon_Item;
-    }, { "../Util/Util": 28, "./_active": 14, "./_convert": 15, "./_deactive": 16, "./_delete": 17, "./_drawCanvas": 18, "./_handle_touchEnd": 19, "./_handle_touchMove": 20, "./_init": 21, "./_init_btn": 22, "./_init_event": 23, "./_init_style": 24, "./_move": 25, "./_rotate": 26, "./_scale": 27 }], 14: [function (require, module, exports) {
+    }, { "../Util/Util": 29, "./_active": 14, "./_convert": 15, "./_deactive": 16, "./_delete": 17, "./_drawCanvas": 18, "./_handle_touchEnd": 19, "./_handle_touchMove": 20, "./_init": 21, "./_init_btn": 22, "./_init_event": 23, "./_init_style": 24, "./_move": 25, "./_rotate": 26, "./_scale": 27 }], 14: [function (require, module, exports) {
         function _active() {
             var btnList = [this._rotateBtn, this._closeBtn, this._scaleBtn];
             this._isActive = true;
@@ -789,7 +788,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         };
 
         module.exports = _rotate;
-    }, { "gl-matrix": 31 }], 27: [function (require, module, exports) {
+    }, { "gl-matrix": 32 }], 27: [function (require, module, exports) {
         var glMatrix = require('gl-matrix');
 
         function _scale(dis) {
@@ -825,7 +824,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         };
 
         module.exports = _scale;
-    }, { "gl-matrix": 31 }], 28: [function (require, module, exports) {
+    }, { "gl-matrix": 32 }], 28: [function (require, module, exports) {
+        var Canvas_Item = require('./Canvas_Item/Canvas_Item');
+
+        var Sdk = function () {
+            function Sdk() {
+                _classCallCheck(this, Sdk);
+
+                this._canvas = null;
+            }
+
+            _createClass(Sdk, [{
+                key: "createCanvas",
+                value: function createCanvas(container, option) {
+                    return this._canvas = new Canvas_Item(container, option);
+                }
+            }]);
+
+            return Sdk;
+        }();
+
+        module.exports = Sdk;
+    }, { "./Canvas_Item/Canvas_Item": 1 }], 29: [function (require, module, exports) {
         var _init_option = require('./_init_option');
 
         var Util = function () {
@@ -844,7 +864,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }();
 
         module.exports = Util;
-    }, { "./_init_option": 29 }], 29: [function (require, module, exports) {
+    }, { "./_init_option": 30 }], 30: [function (require, module, exports) {
         function _init_options(options) {
             for (var i in options) {
                 if (i in this) this[i] = options[i];
@@ -854,12 +874,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         };
 
         module.exports = _init_options;
-    }, {}], 30: [function (require, module, exports) {
-        var Canvas_Item = require('../Canvas_Item/Canvas_Item');
+    }, {}], 31: [function (require, module, exports) {
+        var Canvas_Item = require('../Canvas_Item/Canvas_Item'),
+            Sdk = require('../Sdk');
 
         var container = document.querySelector('#container'),
             img = document.querySelector('#canvas'),
-            item = new Canvas_Item(container);
+            sdk = new Sdk(),
+            item = sdk.createCanvas(container);
 
         document.body.style.margin = 0;
         container.style.position = 'absolute';
@@ -873,7 +895,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         item.shirt = 'images/pink_02.png';
 
         window.item = item;
-    }, { "../Canvas_Item/Canvas_Item": 1 }], 31: [function (require, module, exports) {
+    }, { "../Canvas_Item/Canvas_Item": 1, "../Sdk": 28 }], 32: [function (require, module, exports) {
 
         /*!
         @fileoverview gl-matrix - High performance matrix and vector operations
@@ -1154,4 +1176,4 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     /******/ })
             );
         });
-    }, {}] }, {}, [30]);
+    }, {}] }, {}, [31]);
