@@ -1,13 +1,14 @@
 {
   "name": "orchirly-soda-t-sdk",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "client/src/Sdk.js",
   "dependencies": {
     "dev-env-build-system": "git+https://github.com/jefftong/dev-env-build-system.git",
     "express": "^4.16.2",
     "front-end-cookie-handler": "git+https://github.com/jefftong/front-end-cookie-handler.git",
-    "gl-matrix": "^2.6.1"
+    "gl-matrix": "^2.6.1",
+    "qrcode": "^1.2.0"
   },
   "devDependencies": {},
   "scripts": {

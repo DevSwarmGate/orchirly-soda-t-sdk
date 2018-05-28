@@ -20,3 +20,4 @@ item.frame = 'images/red_frame.png';
 item.shirt = 'images/pink_02.png';
 
 window.item = item;
+window.sdk = sdk;

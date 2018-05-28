@@ -10,7 +10,6 @@ const   Util = require('../Util/Util'),
 
 const   LOGO_SRC = require('./_logoImg_base64'),
         BG_SRC = require('./_bgImg_base64'),
-        //SODA_SRC = require('./_sodaImg_base64'),
         LOADING_SRC= require('./_loadingGif_base64');
 
 const   SIZE_RATIO = 693/868,

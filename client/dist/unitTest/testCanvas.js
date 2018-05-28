@@ -31,9 +31,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         var LOGO_SRC = require('./_logoImg_base64'),
             BG_SRC = require('./_bgImg_base64'),
-
-        //SODA_SRC = require('./_sodaImg_base64'),
-        LOADING_SRC = require('./_loadingGif_base64');
+            LOADING_SRC = require('./_loadingGif_base64');
 
         var SIZE_RATIO = 693 / 868,
             RATIO = 2;
@@ -895,6 +893,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         item.shirt = 'images/pink_02.png';
 
         window.item = item;
+        window.sdk = sdk;
     }, { "../Canvas_Item/Canvas_Item": 1, "../Sdk": 28 }], 32: [function (require, module, exports) {
 
         /*!

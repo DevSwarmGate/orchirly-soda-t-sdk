@@ -30,8 +30,8 @@ function _init(){
         this._init_eleStyle(this._bg_ele,this._ele_style);
         this._bg_ele.style['background-image'] = `url(${this._bg_src})`;
         this._bg_ele.style.display = '';
-        this._bg_ele.style.width = this._frame_ele.style.width = this._shirt_ele.style.width = img.width;
-        this._bg_ele.style.height = this._frame_ele.style.height = this._shirt_ele.style.height =img.height;
+        this._bg_ele.style.width = this._frame_ele.style.width = this._shirt_ele.style.width = img.width +'px';
+        this._bg_ele.style.height = this._frame_ele.style.height = this._shirt_ele.style.height =img.height +'px';
 
         eles.push(this._bg_ele);
         check();
