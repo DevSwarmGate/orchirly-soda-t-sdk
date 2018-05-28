@@ -53,8 +53,8 @@ function _init(){
         this._init_eleStyle(this._bottomLogo_ele,this._ele_style);
         this._bottomLogo_ele.style['background-image'] = `url(${this._bottomLogo_src})`;
         this._bottomLogo_ele.style.display = '';
-        this._bottomLogo_ele.style.width = img.width;
-        this._bottomLogo_ele.style.height = img.height;
+        this._bottomLogo_ele.style.width = img.width+'px';
+        this._bottomLogo_ele.style.height = img.height+'px';
         
         eles.push(this._bottomLogo_ele);
         check();
