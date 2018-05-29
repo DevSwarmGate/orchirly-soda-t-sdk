@@ -714,7 +714,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             var setStyle = function setStyle(ele, style) {
                 for (var i in style) {
-                    ele.style[i] = style[i];
+                    var value = style[i];
+                    if (i === 'width' || i === 'height') value = value + 'px';
+
+                    ele.style[i] = value;
                 }
             };
 

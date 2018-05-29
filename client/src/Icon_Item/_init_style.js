@@ -2,7 +2,11 @@ function _init_style(){
     
     let setStyle =(ele,style)=>{
         for(let i in style){
-            ele.style[i] = style[i];
+            let value = style[i];
+            if(i === 'width' || i === 'height')
+                value = value+'px';
+
+            ele.style[i] = value;
         }
     };
 
