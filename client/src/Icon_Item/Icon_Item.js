@@ -31,7 +31,7 @@ const   BTN_STYLE ={
     'background-position':'0% 0%',
     'background-size':'100% 100%',
     'background-repeat':'no-repeat',
-    'background-color':'rgba(1,0,0,0.7)',
+    //'background-color':'rgba(1,0,0,0.7)',
     'display':'none'
 };
 
