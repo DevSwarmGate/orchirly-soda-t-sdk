@@ -5,8 +5,10 @@ function _genQRCode(url,cb){
         if(err)
             console.log(err);
         
-        this._qr_img = dataURL;
-        cb();
+        this._loadImg(dataURL,(img)=>{
+            this._qr_img = img;
+            cb();
+        });
     });
 };
 

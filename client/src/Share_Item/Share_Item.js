@@ -1,6 +1,9 @@
 const   Util = require('../Util/Util'),
+        _drawCanvas = require('./_drawCanvas'),
         _genQRCode = require('./_genQRCode'),
-        _init = require('./_init');
+        _init = require('./_init'),
+        _loadImg = require('./_loadImg'),
+        _create = require('./_create');
 
 const   SODA_SRC = require('./_sodaImg_base64');
 
@@ -28,10 +31,13 @@ class Share_Item{
         this._init();
     }
 
-    create(url,submissionImg){_create.call(this,url,submissionImg);};
+    create(url,submissionImgSrc,cb){_create.call(this,url,submissionImgSrc,cb);};
 
     _init(){_init.call(this);}
     _init_option(option){Util.init_option.call(this,option);}
+    _drawCanvas(cb){_drawCanvas.call(this,cb);}
     _genQRCode(url,cb){_genQRCode.call(this,url,cb);}
     _loadImg(src,cb){_loadImg.call(this,src,cb);}
 }
+
+module.exports = Share_Item;
