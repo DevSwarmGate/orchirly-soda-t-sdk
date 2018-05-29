@@ -15,8 +15,9 @@ function _init(){
         this._init_eleStyle(this._frame_ele,this._ele_style);
     };
 
-    this._container.style.width = this._bg_container.style.width = this._icon_container.style.width = window.innerWidth+'px';
-    this._container.style.height = this._bg_container.style.height = this._icon_container.style.height =window.innerWidth / this._size_ratio+'px';
+    this._container.style.left = 0.05 * window.innerWidth+'px';
+    this._container.style.width = this._bg_container.style.width = this._icon_container.style.width = 0.9 * window.innerWidth+'px';
+    this._container.style.height = this._bg_container.style.height = this._icon_container.style.height = (0.9 * window.innerWidth) / this._size_ratio+'px';
     this._container.appendChild(this._bg_container);
     this._container.appendChild(this._icon_container);
     this._init_eleStyle(this._bg_container,this._ele_style);
@@ -30,8 +31,8 @@ function _init(){
         this._init_eleStyle(this._bg_ele,this._ele_style);
         this._bg_ele.style['background-image'] = `url(${this._bg_src})`;
         this._bg_ele.style.display = '';
-        this._bg_ele.style.width = this._frame_ele.style.width = this._shirt_ele.style.width = img.width +'px';
-        this._bg_ele.style.height = this._frame_ele.style.height = this._shirt_ele.style.height =img.height +'px';
+        this._bg_ele.style.width = this._frame_ele.style.width = this._shirt_ele.style.width = 0.9 * img.width +'px';
+        this._bg_ele.style.height = this._frame_ele.style.height = this._shirt_ele.style.height = 0.9 * img.height +'px';
 
         eles.push(this._bg_ele);
         check();
@@ -53,8 +54,8 @@ function _init(){
         this._init_eleStyle(this._bottomLogo_ele,this._ele_style);
         this._bottomLogo_ele.style['background-image'] = `url(${this._bottomLogo_src})`;
         this._bottomLogo_ele.style.display = '';
-        this._bottomLogo_ele.style.width = img.width+'px';
-        this._bottomLogo_ele.style.height = img.height+'px';
+        this._bottomLogo_ele.style.width = 0.9 * img.width+'px';
+        this._bottomLogo_ele.style.height = 0.9 * img.height+'px';
         
         eles.push(this._bottomLogo_ele);
         check();

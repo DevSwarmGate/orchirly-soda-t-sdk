@@ -253,8 +253,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 _this3._init_eleStyle(_this3._frame_ele, _this3._ele_style);
             };
 
-            this._container.style.width = this._bg_container.style.width = this._icon_container.style.width = window.innerWidth + 'px';
-            this._container.style.height = this._bg_container.style.height = this._icon_container.style.height = window.innerWidth / this._size_ratio + 'px';
+            this._container.style.left = 0.05 * window.innerWidth + 'px';
+            this._container.style.width = this._bg_container.style.width = this._icon_container.style.width = 0.9 * window.innerWidth + 'px';
+            this._container.style.height = this._bg_container.style.height = this._icon_container.style.height = 0.9 * window.innerWidth / this._size_ratio + 'px';
             this._container.appendChild(this._bg_container);
             this._container.appendChild(this._icon_container);
             this._init_eleStyle(this._bg_container, this._ele_style);
@@ -268,8 +269,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 _this3._init_eleStyle(_this3._bg_ele, _this3._ele_style);
                 _this3._bg_ele.style['background-image'] = "url(" + _this3._bg_src + ")";
                 _this3._bg_ele.style.display = '';
-                _this3._bg_ele.style.width = _this3._frame_ele.style.width = _this3._shirt_ele.style.width = img.width + 'px';
-                _this3._bg_ele.style.height = _this3._frame_ele.style.height = _this3._shirt_ele.style.height = img.height + 'px';
+                _this3._bg_ele.style.width = _this3._frame_ele.style.width = _this3._shirt_ele.style.width = 0.9 * img.width + 'px';
+                _this3._bg_ele.style.height = _this3._frame_ele.style.height = _this3._shirt_ele.style.height = 0.9 * img.height + 'px';
 
                 eles.push(_this3._bg_ele);
                 check();
@@ -291,8 +292,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 _this3._init_eleStyle(_this3._bottomLogo_ele, _this3._ele_style);
                 _this3._bottomLogo_ele.style['background-image'] = "url(" + _this3._bottomLogo_src + ")";
                 _this3._bottomLogo_ele.style.display = '';
-                _this3._bottomLogo_ele.style.width = img.width + 'px';
-                _this3._bottomLogo_ele.style.height = img.height + 'px';
+                _this3._bottomLogo_ele.style.width = 0.9 * img.width + 'px';
+                _this3._bottomLogo_ele.style.height = 0.9 * img.height + 'px';
 
                 eles.push(_this3._bottomLogo_ele);
                 check();

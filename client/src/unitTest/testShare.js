@@ -9,6 +9,9 @@ let container = document.querySelector('#container'),
 
 document.body.style.margin = 0;
 container.style.position = 'absolute';
+container.style.width = '90%';
+container.style.left = '5%';
+
 img.style.background = container.style.background = 'rgba(1,0,0,.7)';
 
 img.style.width ='100%';
