@@ -1,6 +1,7 @@
 function _convert(cb){
     let containerClientRect = this._container.getBoundingClientRect();
     
+    console.log(containerClientRect);
     this._canvas.width = containerClientRect.width * this._ratio;
     this._canvas.height = containerClientRect.height * this._ratio;
     this._canvas.style.width = '100%';
@@ -11,6 +12,7 @@ function _convert(cb){
 
         this._drawCanvas(()=>{
             cb(this._canvas.toDataURL());
+            this._icon_imgs = [];
         });
     };
 

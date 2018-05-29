@@ -11,6 +11,9 @@ let buildSystem = new BuildSystem(
             },
             "testCanvas":{
                 ".js":"unitTest/testCanvas.js"
+            },
+            "testShare":{
+                ".js":"unitTest/testShare.js"
             }
         }
     );

@@ -899,14 +899,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         document.body.style.margin = 0;
         container.style.position = 'absolute';
+        container.style.width = '90%';
+        container.style.left = '5%';
+
         img.style.background = container.style.background = 'rgba(1,0,0,.7)';
 
         img.style.width = '100%';
         img.style.position = 'absolute';
-        img.style.top = '100%';
-
-        item.frame = 'images/red_frame.png';
-        item.shirt = 'images/pink_02.png';
+        img.style.top = 0;
 
         window.item = item;
         window.sdk = sdk;
