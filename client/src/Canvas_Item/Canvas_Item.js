@@ -74,11 +74,11 @@ class Canvas_Item{
     --------------------*/
     appendIcon(src,option){_appendIcon.call(this,src,option);}
     convert(cb){return _convert.call(this,cb);}
-    deselectAll(){_deselectAll.call(this);}
     /*-------------------
         private method
     --------------------*/
     _drawCanvas(cb){_drawCanvas.call(this,cb);}
+    _deselectAll(evt){_deselectAll.call(this,evt);}
     _setEle(eleKey,src){_setEle.call(this,eleKey,src);}
     _init_option(option){Util.init_option.call(this,option);}
     _init_eleStyle(ele,style){_init_eleStyle.call(this,ele,style);}

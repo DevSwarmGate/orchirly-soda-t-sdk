@@ -1,4 +1,7 @@
-function _deselectAll(){
+function _deselectAll(evt){
+    if(evt.target !== this._icon_container)
+        return;
+    
     this._icons.forEach(icon=>{
         icon.active = false;
     });

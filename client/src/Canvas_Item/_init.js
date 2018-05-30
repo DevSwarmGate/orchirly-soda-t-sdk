@@ -25,6 +25,7 @@ function _init(){
     this._bg_container.style.display = '';
     this._icon_container.style.display = '';
     this._icon_container.style.overflow = 'hidden';
+    this._icon_container.addEventListener('touchend',this._deselectAll.bind(this),false);
 
     this._loadImg(this._bg_src,(img)=>{
         this._bg_img = img;

@@ -201,7 +201,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var Util = require('../Util/Util'),
         _appendIcon = require('./_appendIcon'),
         _convert = require('./_convert'),
-        _deselectAll = require('./_deselectAll'),
+        _deselectAll2 = require('./_deselectAll'),
         _drawCanvas2 = require('./_drawCanvas'),
         _init2 = require('./_init'),
         _init_eleStyle2 = require('./_init_eleStyle'),
@@ -282,11 +282,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function convert(cb) {
           return _convert.call(this, cb);
         }
-      }, {
-        key: "deselectAll",
-        value: function deselectAll() {
-          _deselectAll.call(this);
-        }
         /*-------------------
             private method
         --------------------*/
@@ -295,6 +290,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "_drawCanvas",
         value: function _drawCanvas(cb) {
           _drawCanvas2.call(this, cb);
+        }
+      }, {
+        key: "_deselectAll",
+        value: function _deselectAll(evt) {
+          _deselectAll2.call(this, evt);
         }
       }, {
         key: "_setEle",
@@ -403,7 +403,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     module.exports = _convert;
   }, {}], 9: [function (require, module, exports) {
-    function _deselectAll() {
+    function _deselectAll(evt) {
+      if (evt.target !== this._icon_container) return;
+
       this._icons.forEach(function (icon) {
         icon.active = false;
       });
@@ -480,6 +482,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       this._bg_container.style.display = '';
       this._icon_container.style.display = '';
       this._icon_container.style.overflow = 'hidden';
+      this._icon_container.addEventListener('touchend', this._deselectAll.bind(this), false);
 
       this._loadImg(this._bg_src, function (img) {
         _this5._bg_img = img;

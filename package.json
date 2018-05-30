@@ -1,6 +1,6 @@
 {
   "name": "orchirly-soda-t-sdk",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
   "main": "client/src/Sdk.js",
   "dependencies": {
