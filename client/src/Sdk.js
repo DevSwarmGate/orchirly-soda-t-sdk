@@ -40,6 +40,7 @@ class Sdk{
     createCanvas(container,option){return this._canvas = new Canvas_Item(container,option);}
     createShare(bgSrc,option){return this._share = new Share_Item(bgSrc,option);}
     setWechatShare(title,desc,link,imgUrl,errorCb,successCb){_setWechatShare.call(this,title,desc,link,imgUrl,errorCb,successCb);}
+    getSubmission(){_getSubmission.call(this);}
         /*------------
             微信API
         -------------*/

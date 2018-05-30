@@ -1,6 +1,7 @@
 const   Util = require('../Util/Util'),
         _appendIcon= require('./_appendIcon'),
         _convert = require('./_convert'),
+        _deselectAll = require('./_deselectAll'),
         _drawCanvas = require('./_drawCanvas'),
         _init = require('./_init'),
         _init_eleStyle = require('./_init_eleStyle'),
@@ -73,6 +74,7 @@ class Canvas_Item{
     --------------------*/
     appendIcon(src,option){_appendIcon.call(this,src,option);}
     convert(cb){return _convert.call(this,cb);}
+    deselectAll(){_deselectAll.call(this);}
     /*-------------------
         private method
     --------------------*/
