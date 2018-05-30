@@ -615,6 +615,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this._rotateCb = function () {
           console.log('rotate cb');
         };
+        this._deleteCb = function () {
+          console.log('delete cb');
+        };
 
         this._init_option(option);
         this._init();
@@ -792,6 +795,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       var _this8 = this;
 
       this._dom.remove();
+      this._deleteCb(this);
       Object.keys(this).forEach(function (key) {
         _this8[key] = null;
       });

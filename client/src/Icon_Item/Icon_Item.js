@@ -66,6 +66,7 @@ class Icon_Item{
         this._moveCb = ()=>{console.log('move cb');}
         this._scaleCb = ()=>{console.log('scale cb');}
         this._rotateCb = ()=>{console.log('rotate cb');}
+        this._deleteCb = ()=>{console.log('delete cb');}
 
         this._init_option(option);
         this._init();
