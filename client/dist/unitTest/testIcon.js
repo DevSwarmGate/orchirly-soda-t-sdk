@@ -415,8 +415,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         module.exports = _init_style;
     }, {}], 14: [function (require, module, exports) {
         function _move(dis) {
-            this._dom.style.left = this._dom.offsetLeft + dis[0];
-            this._dom.style.top = this._dom.offsetTop + dis[1];
+            this._dom.style.left = this._dom.offsetLeft + dis[0] + "px";
+            this._dom.style.top = this._dom.offsetTop + dis[1] + "px";
             this._moveCb(this);
         };
 

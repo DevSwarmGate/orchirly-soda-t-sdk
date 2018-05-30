@@ -933,8 +933,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     module.exports = _init_style;
   }, {}], 30: [function (require, module, exports) {
     function _move(dis) {
-      this._dom.style.left = this._dom.offsetLeft + dis[0];
-      this._dom.style.top = this._dom.offsetTop + dis[1];
+      this._dom.style.left = this._dom.offsetLeft + dis[0] + "px";
+      this._dom.style.top = this._dom.offsetTop + dis[1] + "px";
       this._moveCb(this);
     };
 
@@ -989,7 +989,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = _rotate;
-  }, { "gl-matrix": 51 }], 32: [function (require, module, exports) {
+  }, { "gl-matrix": 53 }], 32: [function (require, module, exports) {
     module.exports = 'data:image/png;base64,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';
   }, {}], 33: [function (require, module, exports) {
     var glMatrix = require('gl-matrix');
@@ -1027,7 +1027,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = _scale;
-  }, { "gl-matrix": 51 }], 34: [function (require, module, exports) {
+  }, { "gl-matrix": 53 }], 34: [function (require, module, exports) {
     module.exports = 'data:image/png;base64,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';
   }, {}], 35: [function (require, module, exports) {
     var APIAbstract = require('./APIAbstract/APIAbstract'),
@@ -1037,7 +1037,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var _api_config = require('./_api_config'),
         _getUrlParam2 = require('./_getUrlParam'),
-        _init4 = require('./_init');
+        _init4 = require('./_init'),
+
+    //wechat
+    _setWechatShare = require('./wechat/_setWechatShare'),
+        _configJSSDK2 = require('./wechat/_configJSSDK');
 
     var SERVER_CONFIG = {
       host: 'http://test.swarmgate.com.cn',
@@ -1080,6 +1084,50 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function createShare(bgSrc, option) {
           return this._share = new Share_Item(bgSrc, option);
         }
+      }, {
+        key: "setWechatShare",
+        value: function setWechatShare(title, desc, link, imgUrl, errorCb, successCb) {
+          _setWechatShare.call(this, title, desc, link, imgUrl, errorCb, successCb);
+        }
+        /*------------
+            微信API
+        -------------*/
+
+      }, {
+        key: "_configJSSDK",
+        value: function _configJSSDK(errorCb, successCb) {
+          _configJSSDK2.call(this, errorCb, successCb);
+        }
+      }, {
+        key: "_getOAuthCode",
+        value: function (_getOAuthCode2) {
+          function _getOAuthCode() {
+            return _getOAuthCode2.apply(this, arguments);
+          }
+
+          _getOAuthCode.toString = function () {
+            return _getOAuthCode2.toString();
+          };
+
+          return _getOAuthCode;
+        }(function () {
+          _getOAuthCode.call(this);
+        })
+      }, {
+        key: "_getWXInfo",
+        value: function (_getWXInfo2) {
+          function _getWXInfo(_x, _x2, _x3) {
+            return _getWXInfo2.apply(this, arguments);
+          }
+
+          _getWXInfo.toString = function () {
+            return _getWXInfo2.toString();
+          };
+
+          return _getWXInfo;
+        }(function (code, errorCb, successCb) {
+          _getWXInfo.call(this, code, errorCb, successCb);
+        })
         /*-------------------
             private method
         --------------------*/
@@ -1105,7 +1153,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }();
 
     module.exports = Sdk;
-  }, { "./APIAbstract/APIAbstract": 1, "./Canvas_Item/Canvas_Item": 5, "./Share_Item/Share_Item": 36, "./Util/Util": 43, "./_api_config": 45, "./_getUrlParam": 46, "./_init": 47 }], 36: [function (require, module, exports) {
+  }, { "./APIAbstract/APIAbstract": 1, "./Canvas_Item/Canvas_Item": 5, "./Share_Item/Share_Item": 36, "./Util/Util": 43, "./_api_config": 45, "./_getUrlParam": 46, "./_init": 47, "./wechat/_configJSSDK": 49, "./wechat/_setWechatShare": 50 }], 36: [function (require, module, exports) {
     var Util = require('../Util/Util'),
         _drawCanvas4 = require('./_drawCanvas'),
         _genQRCode2 = require('./_genQRCode'),
@@ -1279,7 +1327,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = _genQRCode;
-  }, { "qrcode": 52 }], 40: [function (require, module, exports) {
+  }, { "qrcode": 54 }], 40: [function (require, module, exports) {
     function _init() {
       var _this14 = this;
 
@@ -1488,6 +1536,96 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     window.item = item;
     window.sdk = sdk;
   }, { "../Sdk": 35 }], 49: [function (require, module, exports) {
+    var MSG = {
+      "0": "getJSApiConfig error"
+    };
+
+    var API_LIST = ["onMenuShareTimeline", "onMenuShareAppMessage", "showAllNonBaseMenuItem"];
+
+    function _configJSSDK(errorCb, successCb) {
+      var _this16 = this;
+
+      var url = window.location.href.split('#')[0];
+
+      // let init_statHandler=()=>{
+      //     this._statHandler.onRequest=(fid,type,detail)=>{
+      //         this._models.stat.request('addSubmission',{get:{fid:fid},post:{type:type,detail:detail}},(data)=>{
+      //             if(this._debug)
+      //                 console.log('statHandler->addSubmission',data);
+      //         });
+      //     };
+
+      //     this._statHandler.markPV();
+      // };
+
+      var config = function config() {
+        var jsApi = {
+          debug: false, //this._debug, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+          appId: _this16._jsSDKConfig.appid, // 必填，公众号的唯一标识
+          timestamp: _this16._jsSDKConfig.timestamp, // 必填，生成签名的时间戳
+          nonceStr: _this16._jsSDKConfig.noncestr, // 必填，生成签名的随机串
+          signature: _this16._jsSDKConfig.signature, // 必填，签名，见附录1
+          jsApiList: API_LIST //  ,"hideMenuItems"必填，需要使用的JS接口列表，所有JS接口列表见附录2  
+        };
+
+        wx.config(jsApi);
+        //init_statHandler();
+      };
+
+      this._models.wechat.request('getJSApiConfig', { post: { url: url } }, function (data) {
+        if (_this16._debug) console.log('getJSApiConfig', data);
+
+        if (data.error_code == '200') {
+          _this16._jsSDKConfig = data.data;
+          config();
+          successCb();
+        } else {
+          errorCb({ api_error_code: data.code, msg: { id: 0, messageList: MSG } });
+        }
+      });
+    };
+
+    module.exports = _configJSSDK;
+  }, {}], 50: [function (require, module, exports) {
+    function setWechatShare(title, desc, link, imgUrl, errorCb, successCb) {
+      var set = function set() {
+        wx.onMenuShareTimeline({
+          title: title,
+          link: link,
+          imgUrl: imgUrl,
+          success: function success() {
+            //用户确认分享后执行的回调
+            // alert(linkUrl);
+          },
+          cancel: function cancel() {
+            //用户取消分享后执行的回调
+          }
+        });
+
+        wx.onMenuShareAppMessage({
+          title: title,
+          desc: desc,
+          link: link,
+          imgUrl: imgUrl,
+          success: function success() {
+            //用户确认分享后执行的回调
+            // alert(linkUrl);
+          },
+          cancel: function cancel() {
+            //用户取消分享后执行的回调
+          }
+        });
+
+        successCb();
+      };
+
+      if (!this._jsSDKConfig) return this._configJSSDK(errorCb, set);
+
+      set();
+    };
+
+    module.exports = setWechatShare;
+  }, {}], 51: [function (require, module, exports) {
     'use strict';
 
     var G = require('window-or-global');
@@ -1495,7 +1633,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     module.exports = function () {
       return typeof G.Promise === 'function' && typeof G.Promise.prototype.then === 'function';
     };
-  }, { "window-or-global": 79 }], 50: [function (require, module, exports) {
+  }, { "window-or-global": 81 }], 52: [function (require, module, exports) {
     'use strict';
 
     /******************************************************************************
@@ -1653,7 +1791,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     if (typeof module !== 'undefined') {
       module.exports = dijkstra;
     }
-  }, {}], 51: [function (require, module, exports) {
+  }, {}], 53: [function (require, module, exports) {
 
     /*!
     @fileoverview gl-matrix - High performance matrix and vector operations
@@ -1934,7 +2072,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           /******/ })
       );
     });
-  }, {}], 52: [function (require, module, exports) {
+  }, {}], 54: [function (require, module, exports) {
     var canPromise = require('can-promise');
     var QRCode = require('./core/qrcode');
     var CanvasRenderer = require('./renderer/canvas');
@@ -2009,7 +2147,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     exports.toString = renderCanvas.bind(null, function (data, _, opts) {
       return SvgRenderer.render(data, opts);
     });
-  }, { "./core/qrcode": 68, "./renderer/canvas": 74, "./renderer/svg-tag.js": 75, "can-promise": 49 }], 53: [function (require, module, exports) {
+  }, { "./core/qrcode": 70, "./renderer/canvas": 76, "./renderer/svg-tag.js": 77, "can-promise": 51 }], 55: [function (require, module, exports) {
     /**
      * Alignment pattern are fixed reference pattern in defined positions
      * in a matrix symbology, which enables the decode software to re-synchronise
@@ -2094,7 +2232,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       return coords;
     };
-  }, { "./utils": 72 }], 54: [function (require, module, exports) {
+  }, { "./utils": 74 }], 56: [function (require, module, exports) {
     var Mode = require('./mode');
 
     /**
@@ -2149,7 +2287,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = AlphanumericData;
-  }, { "./mode": 65 }], 55: [function (require, module, exports) {
+  }, { "./mode": 67 }], 57: [function (require, module, exports) {
     function BitBuffer() {
       this.buffer = [];
       this.length = 0;
@@ -2187,7 +2325,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = BitBuffer;
-  }, {}], 56: [function (require, module, exports) {
+  }, {}], 58: [function (require, module, exports) {
     var Buffer = require('../utils/buffer');
 
     /**
@@ -2257,7 +2395,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = BitMatrix;
-  }, { "../utils/buffer": 77 }], 57: [function (require, module, exports) {
+  }, { "../utils/buffer": 79 }], 59: [function (require, module, exports) {
     var Buffer = require('../utils/buffer');
     var Mode = require('./mode');
 
@@ -2285,7 +2423,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = ByteData;
-  }, { "../utils/buffer": 77, "./mode": 65 }], 58: [function (require, module, exports) {
+  }, { "../utils/buffer": 79, "./mode": 67 }], 60: [function (require, module, exports) {
     var ECLevel = require('./error-correction-level');
 
     var EC_BLOCKS_TABLE = [
@@ -2341,7 +2479,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return undefined;
       }
     };
-  }, { "./error-correction-level": 59 }], 59: [function (require, module, exports) {
+  }, { "./error-correction-level": 61 }], 61: [function (require, module, exports) {
     exports.L = { bit: 1 };
     exports.M = { bit: 0 };
     exports.Q = { bit: 3 };
@@ -2391,7 +2529,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         return defaultValue;
       }
     };
-  }, {}], 60: [function (require, module, exports) {
+  }, {}], 62: [function (require, module, exports) {
     var getSymbolSize = require('./utils').getSymbolSize;
     var FINDER_PATTERN_SIZE = 7;
 
@@ -2413,7 +2551,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       // bottom-left
       [0, size - FINDER_PATTERN_SIZE]];
     };
-  }, { "./utils": 72 }], 61: [function (require, module, exports) {
+  }, { "./utils": 74 }], 63: [function (require, module, exports) {
     var Utils = require('./utils');
 
     var G15 = 1 << 10 | 1 << 8 | 1 << 5 | 1 << 4 | 1 << 2 | 1 << 1 | 1 << 0;
@@ -2443,7 +2581,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       // will result in an all-zero data string
       return (data << 10 | d) ^ G15_MASK;
     };
-  }, { "./utils": 72 }], 62: [function (require, module, exports) {
+  }, { "./utils": 74 }], 64: [function (require, module, exports) {
     var Buffer = require('../utils/buffer');
 
     var EXP_TABLE = new Buffer(512);
@@ -2517,7 +2655,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       // @see {@link initTables}
       return EXP_TABLE[LOG_TABLE[x] + LOG_TABLE[y]];
     };
-  }, { "../utils/buffer": 77 }], 63: [function (require, module, exports) {
+  }, { "../utils/buffer": 79 }], 65: [function (require, module, exports) {
     var Mode = require('./mode');
     var Utils = require('./utils');
 
@@ -2570,7 +2708,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = KanjiData;
-  }, { "./mode": 65, "./utils": 72 }], 64: [function (require, module, exports) {
+  }, { "./mode": 67, "./utils": 74 }], 66: [function (require, module, exports) {
     /**
      * Data mask pattern reference
      * @type {Object}
@@ -2805,7 +2943,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       return bestPattern;
     };
-  }, {}], 65: [function (require, module, exports) {
+  }, {}], 67: [function (require, module, exports) {
     var Version = require('./version');
     var Regex = require('./regex');
 
@@ -2964,7 +3102,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         return defaultValue;
       }
     };
-  }, { "./regex": 70, "./version": 73 }], 66: [function (require, module, exports) {
+  }, { "./regex": 72, "./version": 75 }], 68: [function (require, module, exports) {
     var Mode = require('./mode');
 
     function NumericData(data) {
@@ -3008,7 +3146,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = NumericData;
-  }, { "./mode": 65 }], 67: [function (require, module, exports) {
+  }, { "./mode": 67 }], 69: [function (require, module, exports) {
     var Buffer = require('../utils/buffer');
     var GF = require('./galois-field');
 
@@ -3074,7 +3212,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       return poly;
     };
-  }, { "../utils/buffer": 77, "./galois-field": 62 }], 68: [function (require, module, exports) {
+  }, { "../utils/buffer": 79, "./galois-field": 64 }], 70: [function (require, module, exports) {
     var Buffer = require('../utils/buffer');
     var Utils = require('./utils');
     var ECLevel = require('./error-correction-level');
@@ -3565,7 +3703,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       return createSymbol(data, version, errorCorrectionLevel, mask);
     };
-  }, { "../utils/buffer": 77, "./alignment-pattern": 53, "./bit-buffer": 55, "./bit-matrix": 56, "./error-correction-code": 58, "./error-correction-level": 59, "./finder-pattern": 60, "./format-info": 61, "./mask-pattern": 64, "./mode": 65, "./reed-solomon-encoder": 69, "./segments": 71, "./utils": 72, "./version": 73, "isarray": 78 }], 69: [function (require, module, exports) {
+  }, { "../utils/buffer": 79, "./alignment-pattern": 55, "./bit-buffer": 57, "./bit-matrix": 58, "./error-correction-code": 60, "./error-correction-level": 61, "./finder-pattern": 62, "./format-info": 63, "./mask-pattern": 66, "./mode": 67, "./reed-solomon-encoder": 71, "./segments": 73, "./utils": 74, "./version": 75, "isarray": 80 }], 71: [function (require, module, exports) {
     var Buffer = require('../utils/buffer');
     var Polynomial = require('./polynomial');
 
@@ -3625,7 +3763,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = ReedSolomonEncoder;
-  }, { "../utils/buffer": 77, "./polynomial": 67 }], 70: [function (require, module, exports) {
+  }, { "../utils/buffer": 79, "./polynomial": 69 }], 72: [function (require, module, exports) {
     var numeric = '[0-9]+';
     var alphanumeric = '[A-Z $%*+\\-./:]+';
     var kanji = '(?:[u3000-u303F]|[u3040-u309F]|[u30A0-u30FF]|' + '[uFF00-uFFEF]|[u4E00-u9FAF]|[u2605-u2606]|[u2190-u2195]|u203B|' + '[u2010u2015u2018u2019u2025u2026u201Cu201Du2225u2260]|' + '[u0391-u0451]|[u00A7u00A8u00B1u00B4u00D7u00F7])+';
@@ -3654,7 +3792,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     exports.testAlphanumeric = function testAlphanumeric(str) {
       return TEST_ALPHANUMERIC.test(str);
     };
-  }, {}], 71: [function (require, module, exports) {
+  }, {}], 73: [function (require, module, exports) {
     var Mode = require('./mode');
     var NumericData = require('./numeric-data');
     var AlphanumericData = require('./alphanumeric-data');
@@ -3967,7 +4105,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     exports.rawSplit = function rawSplit(data) {
       return exports.fromArray(getSegmentsFromString(data, Utils.isKanjiModeEnabled()));
     };
-  }, { "./alphanumeric-data": 54, "./byte-data": 57, "./kanji-data": 63, "./mode": 65, "./numeric-data": 66, "./regex": 70, "./utils": 72, "dijkstrajs": 50 }], 72: [function (require, module, exports) {
+  }, { "./alphanumeric-data": 56, "./byte-data": 59, "./kanji-data": 65, "./mode": 67, "./numeric-data": 68, "./regex": 72, "./utils": 74, "dijkstrajs": 52 }], 74: [function (require, module, exports) {
     var toSJISFunction;
     var CODEWORDS_COUNT = [0, // Not used
     26, 44, 70, 100, 134, 172, 196, 242, 292, 346, 404, 466, 532, 581, 655, 733, 815, 901, 991, 1085, 1156, 1258, 1364, 1474, 1588, 1706, 1828, 1921, 2051, 2185, 2323, 2465, 2611, 2761, 2876, 3034, 3196, 3362, 3532, 3706];
@@ -4026,7 +4164,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     exports.toSJIS = function toSJIS(kanji) {
       return toSJISFunction(kanji);
     };
-  }, {}], 73: [function (require, module, exports) {
+  }, {}], 75: [function (require, module, exports) {
     var Utils = require('./utils');
     var ECCode = require('./error-correction-code');
     var ECLevel = require('./error-correction-level');
@@ -4200,7 +4338,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       return version << 12 | d;
     };
-  }, { "./error-correction-code": 58, "./error-correction-level": 59, "./mode": 65, "./utils": 72, "isarray": 78 }], 74: [function (require, module, exports) {
+  }, { "./error-correction-code": 60, "./error-correction-level": 61, "./mode": 67, "./utils": 74, "isarray": 80 }], 76: [function (require, module, exports) {
     var Utils = require('./utils');
 
     function clearCanvas(ctx, canvas, size) {
@@ -4264,7 +4402,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       return canvasEl.toDataURL(type, rendererOpts.quality);
     };
-  }, { "./utils": 76 }], 75: [function (require, module, exports) {
+  }, { "./utils": 78 }], 77: [function (require, module, exports) {
     var Utils = require('./utils');
 
     function getColorAttrib(color, attrib) {
@@ -4337,7 +4475,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       return svgTag;
     };
-  }, { "./utils": 76 }], 76: [function (require, module, exports) {
+  }, { "./utils": 78 }], 78: [function (require, module, exports) {
     function hex2rgba(hex) {
       if (typeof hex !== 'string') {
         throw new Error('Color should be defined as hex string');
@@ -4426,7 +4564,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }
     };
-  }, {}], 77: [function (require, module, exports) {
+  }, {}], 79: [function (require, module, exports) {
     /**
      * Implementation of a subset of node.js Buffer methods for the browser.
      * Based on https://github.com/feross/buffer
@@ -4917,13 +5055,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = Buffer;
-  }, { "isarray": 78 }], 78: [function (require, module, exports) {
+  }, { "isarray": 80 }], 80: [function (require, module, exports) {
     var toString = {}.toString;
 
     module.exports = Array.isArray || function (arr) {
       return toString.call(arr) == '[object Array]';
     };
-  }, {}], 79: [function (require, module, exports) {
+  }, {}], 81: [function (require, module, exports) {
     (function (global) {
       'use strict';
 

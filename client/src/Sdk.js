@@ -5,7 +5,10 @@ const   APIAbstract = require('./APIAbstract/APIAbstract'),
 
 const   _api_config = require('./_api_config'),
         _getUrlParam = require('./_getUrlParam'),
-        _init = require('./_init');
+        _init = require('./_init'),
+        //wechat
+        _setWechatShare = require('./wechat/_setWechatShare'),
+        _configJSSDK = require('./wechat/_configJSSDK');
 
 const   SERVER_CONFIG={
     host:'http://test.swarmgate.com.cn',
@@ -36,6 +39,13 @@ class Sdk{
     --------------------*/
     createCanvas(container,option){return this._canvas = new Canvas_Item(container,option);}
     createShare(bgSrc,option){return this._share = new Share_Item(bgSrc,option);}
+    setWechatShare(title,desc,link,imgUrl,errorCb,successCb){_setWechatShare.call(this,title,desc,link,imgUrl,errorCb,successCb);}
+        /*------------
+            微信API
+        -------------*/
+    _configJSSDK(errorCb,successCb){_configJSSDK.call(this,errorCb,successCb);}
+    _getOAuthCode(){_getOAuthCode.call(this);}
+    _getWXInfo(code,errorCb,successCb){_getWXInfo.call(this,code,errorCb,successCb);}
     /*-------------------
         private method
     --------------------*/
