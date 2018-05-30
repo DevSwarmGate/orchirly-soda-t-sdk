@@ -254,6 +254,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         //this._sodaLogo_src = SODA_SRC;
         this._loadingGif_src = LOADING_SRC;
 
+        this._deleteCb = function () {
+          console.log('icon delete cb');
+        };
+
         this._canvas = document.createElement('canvas');
         this._init_option(option);
         this._init();
@@ -332,6 +336,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         set: function set(src) {
           this._setEle('frame', src);
         }
+      }, {
+        key: "onIconDelete",
+        set: function set(cb) {
+          this._deleteCb = cb;
+        }
       }]);
 
       return Canvas_Item;
@@ -349,6 +358,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       icon._dom.style.left = '42.5%';
       icon._dom.style.top = '45%';
       icon.touchCb = this._handle_icon_select.bind(this);
+      icon.deleteCb = this._deleteCb.bind(this);
     };
 
     module.exports = _appendIcon;
@@ -729,6 +739,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "rotateCb",
         set: function set(cb) {
           this._rotateCb = cb;
+        }
+      }, {
+        key: "deleteCb",
+        set: function set(cb) {
+          this._deleteCb = cb;
         }
       }, {
         key: "active",

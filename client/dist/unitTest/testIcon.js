@@ -213,6 +213,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     this._rotateCb = cb;
                 }
             }, {
+                key: "deleteCb",
+                set: function set(cb) {
+                    this._deleteCb = cb;
+                }
+            }, {
                 key: "active",
                 set: function set(bool) {
                     if (bool) {

@@ -52,6 +52,8 @@ class Canvas_Item{
         //this._sodaLogo_src = SODA_SRC;
         this._loadingGif_src = LOADING_SRC;
 
+        this._deleteCb = ()=>{console.log('icon delete cb');}
+
         this._canvas = document.createElement('canvas');
         this._init_option(option);
         this._init();
@@ -64,6 +66,8 @@ class Canvas_Item{
     
     get frame(){return this._frame_ele;}
     set frame(src){this._setEle('frame',src);}
+
+    set onIconDelete(cb){this._deleteCb = cb;}
     /*-------------------
         public method
     --------------------*/

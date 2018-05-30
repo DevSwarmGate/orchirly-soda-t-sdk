@@ -78,6 +78,7 @@ class Icon_Item{
     set moveCb(cb){this._moveCb = cb;}
     set scaleCb(cb){this._scaleCb = cb;}
     set rotateCb(cb){this._rotateCb = cb;}
+    set deleteCb(cb){this._deleteCb =cb;}
     set active(bool){if(bool){this._active()}else{this._deactive()};}
     get active(){return this._isActive;}
 
