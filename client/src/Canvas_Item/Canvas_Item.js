@@ -56,16 +56,22 @@ class Canvas_Item{
         this._init_option(option);
         this._init();
     }
-
+    /*-------------------
+        getter and setter
+    --------------------*/
     get shirt(){return this._shirt_ele;}
     set shirt(src){this._setEle('shirt',src);}
     
     get frame(){return this._frame_ele;}
     set frame(src){this._setEle('frame',src);}
-    
+    /*-------------------
+        public method
+    --------------------*/
     appendIcon(src,option){_appendIcon.call(this,src,option);}
     convert(cb){return _convert.call(this,cb);}
-
+    /*-------------------
+        private method
+    --------------------*/
     _drawCanvas(cb){_drawCanvas.call(this,cb);}
     _setEle(eleKey,src){_setEle.call(this,eleKey,src);}
     _init_option(option){Util.init_option.call(this,option);}

@@ -30,9 +30,13 @@ class Share_Item{
         this._init_option(option);
         this._init();
     }
-
+    /*-------------------
+        public method
+    --------------------*/
     create(url,submissionImgSrc,cb){_create.call(this,url,submissionImgSrc,cb);};
-
+    /*-------------------
+        private method
+    --------------------*/
     _init(){_init.call(this);}
     _init_option(option){Util.init_option.call(this,option);}
     _drawCanvas(cb){_drawCanvas.call(this,cb);}

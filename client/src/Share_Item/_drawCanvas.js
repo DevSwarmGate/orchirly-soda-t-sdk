@@ -1,3 +1,6 @@
+const   TOP_RATIO =  0.15,
+        LEFT_RATIO = 0.05;
+
 function _drawCanvas(cb){
     let callCount = 0,
         ctx = this._canvas.getContext("2d"),
@@ -13,7 +16,7 @@ function _drawCanvas(cb){
         let subWidth = 0.9 *  width,
             subHeight = subWidth / (this._submission_img.width/this._submission_img.height);
         
-        ctx.drawImage(this._submission_img,0.05*width,0.05*width,subWidth,subHeight);
+        ctx.drawImage(this._submission_img,LEFT_RATIO*width,TOP_RATIO*width,subWidth,subHeight);
         cb();
     };
 
@@ -21,12 +24,12 @@ function _drawCanvas(cb){
         let subWidth = 0.9 *  width,
             subHeight = subWidth / (this._soda_img.width/this._soda_img.height);
         
-        ctx.drawImage(this._soda_img,0.05*width,0.05*width,subWidth,subHeight);
+        ctx.drawImage(this._soda_img,LEFT_RATIO*width,TOP_RATIO*width,subWidth,subHeight);
         cb();
     };
 
     let drawQR = (cb)=>{
-        ctx.drawImage(this._qr_img,540,770,100,100);
+        ctx.drawImage(this._qr_img,540,845,100,100);
         cb();
     };
 
