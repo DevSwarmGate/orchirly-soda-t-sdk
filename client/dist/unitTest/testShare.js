@@ -1485,6 +1485,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this._debug = bool;
         }
       }, {
+        key: "img",
+        get: function get() {
+          return this._rawData.img;
+        }
+      }, {
         key: "isMember",
         get: function get() {
           return _checkIsMember.call(this);

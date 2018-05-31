@@ -16,6 +16,7 @@ class SubmissionHandler{
 
     set debug(bool){this._debug = bool;}
 
+    get img(){return this._rawData.img;}
     get isMember(){return _checkIsMember.call(this);}
     get hasAddress(){return !!this._rawData.address}
 
