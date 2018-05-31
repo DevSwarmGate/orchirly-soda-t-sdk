@@ -36,9 +36,9 @@ function _configJSSDK(errorCb,successCb){
         //init_statHandler();
     };
 
-    this._models.wechat.request('getJSApiConfig',{post:{url:url}},(data)=>{
+    this._models.wechat.request('getOchirlyJSApiConfig',{post:{url:url}},(data)=>{
         if(this._debug)
-            console.log('getJSApiConfig',data);
+            console.log('getOchirlyJSApiConfig',data);
 
         if(data.error_code == '200'){
             this._jsSDKConfig = data.data;

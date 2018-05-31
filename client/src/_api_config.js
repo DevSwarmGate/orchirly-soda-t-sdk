@@ -23,7 +23,7 @@ let config = {
             },
             sodaGetRank:{
                 get:[],
-                post:[]
+                post:['pid']
             },
             sodaMember:{
                 get:[],
@@ -32,14 +32,6 @@ let config = {
             sendCode:{
                 get:[],
                 post:['tel']
-            },
-            getOchirlyOauthCode:{
-                get:['target'],
-                post:[]
-            },
-            getOchirlyOpenIDInfoWithCode:{
-                get:[],
-                post:['code','openidname']
             },
             sodaUpdateInfo:{
                 get:[],
@@ -65,9 +57,25 @@ let config = {
     wechat:{
         modelName:"ApiPublic",
         verbs:{
-            getJSApiConfig:{
+            getOchirlyJSApiConfig:{
                 get:[],
                 post:['url']
+            }
+        }
+    },
+    /*------------
+        授权API
+    -------------*/
+    auth:{
+        modelName:"ApiOchirly",
+        verbs:{
+            getOchirlyOauthCode:{
+                get:['target'],
+                post:[]
+            },
+            getOchirlyOpenIDInfoWithCode:{
+                get:[],
+                post:['code','openidname']
             }
         }
     }

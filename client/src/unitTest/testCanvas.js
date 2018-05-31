@@ -6,7 +6,7 @@ let container = document.querySelector('#container'),
     sdk = new Sdk(),
     item = sdk.createCanvas(container);
 
-
+sdk.debug = true;
 document.body.style.margin = 0;
 container.style.position = 'absolute';
 img.style.background = container.style.background = 'rgba(1,0,0,.7)';

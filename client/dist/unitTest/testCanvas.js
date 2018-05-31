@@ -157,7 +157,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             keys = method === "GET" ? _this2._verbs[verb].get : _this2._verbs[verb].post;
 
         for (var i = 0; i < keys.length; i++) {
-          if (keys[i] && keys[i] in data) {
+          if (keys[i] && data && keys[i] in data) {
 
             res += encodeURIComponent(keys[i]) + "=" + encodeURIComponent(data[keys[i]]) + "&";
           } else if (_this2._debug) {
@@ -353,7 +353,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }();
 
     module.exports = Canvas_Item;
-  }, { "../Util/Util": 44, "./_appendIcon": 6, "./_bgImg_base64": 7, "./_convert": 8, "./_deselectAll": 9, "./_drawCanvas": 10, "./_handle_icon_select": 11, "./_init": 12, "./_init_eleStyle": 13, "./_loadImg": 14, "./_loadingGif_base64": 15, "./_logoImg_base64": 16, "./_setEle": 17 }], 6: [function (require, module, exports) {
+  }, { "../Util/Util": 49, "./_appendIcon": 6, "./_bgImg_base64": 7, "./_convert": 8, "./_deselectAll": 9, "./_drawCanvas": 10, "./_handle_icon_select": 11, "./_init": 12, "./_init_eleStyle": 13, "./_loadImg": 14, "./_loadingGif_base64": 15, "./_logoImg_base64": 16, "./_setEle": 17 }], 6: [function (require, module, exports) {
     var Icon = require('../Icon_Item/Icon_Item');
 
     function _appendIcon(src, option) {
@@ -785,7 +785,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }();
 
     module.exports = Icon_Item;
-  }, { "../Util/Util": 44, "./_active": 19, "./_convert": 21, "./_deactive": 22, "./_delete": 23, "./_drawCanvas": 24, "./_handle_touchEnd": 25, "./_handle_touchMove": 26, "./_init": 27, "./_init_btn": 28, "./_init_event": 29, "./_init_style": 30, "./_move": 31, "./_rotate": 32, "./_scale": 34 }], 19: [function (require, module, exports) {
+  }, { "../Util/Util": 49, "./_active": 19, "./_convert": 21, "./_deactive": 22, "./_delete": 23, "./_drawCanvas": 24, "./_handle_touchEnd": 25, "./_handle_touchMove": 26, "./_init": 27, "./_init_btn": 28, "./_init_event": 29, "./_init_style": 30, "./_move": 31, "./_rotate": 32, "./_scale": 34 }], 19: [function (require, module, exports) {
     function _active() {
       var btnList = [this._rotateBtn, this._closeBtn, this._scaleBtn];
       this._isActive = true;
@@ -1025,7 +1025,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = _rotate;
-  }, { "gl-matrix": 54 }], 33: [function (require, module, exports) {
+  }, { "gl-matrix": 66 }], 33: [function (require, module, exports) {
     module.exports = 'data:image/png;base64,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';
   }, {}], 34: [function (require, module, exports) {
     var glMatrix = require('gl-matrix');
@@ -1063,7 +1063,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = _scale;
-  }, { "gl-matrix": 54 }], 35: [function (require, module, exports) {
+  }, { "gl-matrix": 66 }], 35: [function (require, module, exports) {
     module.exports = 'data:image/png;base64,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';
   }, {}], 36: [function (require, module, exports) {
     var APIAbstract = require('./APIAbstract/APIAbstract'),
@@ -1074,10 +1074,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _api_config = require('./_api_config'),
         _getUrlParam2 = require('./_getUrlParam'),
         _init4 = require('./_init'),
+        _checkOpenId = require('./_checkOpenId'),
 
     //wechat
     _setWechatShare = require('./wechat/_setWechatShare'),
-        _configJSSDK2 = require('./wechat/_configJSSDK');
+        _configJSSDK2 = require('./wechat/_configJSSDK'),
+
+    //auth
+    _getOAuthCode2 = require('./auth/_getOAuthCode'),
+        _getWXInfo2 = require('./auth/_getWXInfo'),
+
+    //好友入口
+    _addPoint = require('./_addPoint'),
+        _getRank = require('./_getRank'),
+        _getSubmissionByPid = require('./_getSubmissionByPid'),
+
+    //参与入口
+    _getSubmission = require('./_getSubmission');
 
     var SERVER_CONFIG = {
       host: 'http://test.swarmgate.com.cn',
@@ -1089,10 +1102,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       function Sdk(options) {
         _classCallCheck(this, Sdk);
 
+        this._debug = false;
+
         this._canvas = null;
         this._share = null;
+        this._submissionHandler = null;
 
         this._debug = false;
+        this._statFid = SERVER_CONFIG.statFid;
         this._api_host = SERVER_CONFIG.host;
         this._token = SERVER_CONFIG.token;
         this._api_config = _api_config;
@@ -1105,12 +1122,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this._getUrlParam();
         this._init(APIAbstract);
       }
-      /*-------------------
-          public method
-      --------------------*/
-
 
       _createClass(Sdk, [{
+        key: "setWechatShare",
+
+        /*-------------------
+            public method
+        --------------------*/
+        value: function setWechatShare(title, desc, link, imgUrl, errorCb, successCb) {
+          _setWechatShare.call(this, title, desc, link, imgUrl, errorCb, successCb);
+        }
+        /*------------
+            canvas交互
+        -------------*/
+
+      }, {
         key: "createCanvas",
         value: function createCanvas(container, option) {
           return this._canvas = new Canvas_Item(container, option);
@@ -1120,55 +1146,43 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function createShare(bgSrc, option) {
           return this._share = new Share_Item(bgSrc, option);
         }
-      }, {
-        key: "setWechatShare",
-        value: function setWechatShare(title, desc, link, imgUrl, errorCb, successCb) {
-          _setWechatShare.call(this, title, desc, link, imgUrl, errorCb, successCb);
-        }
-      }, {
-        key: "getSubmission",
-        value: function getSubmission() {
-          _getSubmission.call(this);
-        }
         /*------------
-            微信API
+            数据逻辑
         -------------*/
 
       }, {
-        key: "_configJSSDK",
-        value: function _configJSSDK(errorCb, successCb) {
-          _configJSSDK2.call(this, errorCb, successCb);
+        key: "checkOpenId",
+        value: function checkOpenId(errorCb, successCb) {
+          _checkOpenId.call(this, errorCb, successCb);
+        }
+        /*------------
+            好友入口
+        -------------*/
+
+      }, {
+        key: "getRank",
+        value: function getRank(errorCb, successCb) {
+          _getRank.call(this, errorCb, successCb);
         }
       }, {
-        key: "_getOAuthCode",
-        value: function (_getOAuthCode2) {
-          function _getOAuthCode() {
-            return _getOAuthCode2.apply(this, arguments);
-          }
-
-          _getOAuthCode.toString = function () {
-            return _getOAuthCode2.toString();
-          };
-
-          return _getOAuthCode;
-        }(function () {
-          _getOAuthCode.call(this);
-        })
+        key: "getSubmissionByPid",
+        value: function getSubmissionByPid(errorCb, successCb) {
+          _getSubmissionByPid.call(this, errorCb, successCb);
+        }
       }, {
-        key: "_getWXInfo",
-        value: function (_getWXInfo2) {
-          function _getWXInfo(_x, _x2, _x3) {
-            return _getWXInfo2.apply(this, arguments);
-          }
+        key: "addPoint",
+        value: function addPoint(errorCb, successCb) {
+          _addPoint.call(this, errorCb, successCb);
+        }
+        /*------------
+            参与入口
+        -------------*/
 
-          _getWXInfo.toString = function () {
-            return _getWXInfo2.toString();
-          };
-
-          return _getWXInfo;
-        }(function (code, errorCb, successCb) {
-          _getWXInfo.call(this, code, errorCb, successCb);
-        })
+      }, {
+        key: "getSubmission",
+        value: function getSubmission(errorCb, successCb) {
+          _getSubmission.call(this, errorCb, successCb);
+        }
         /*-------------------
             private method
         --------------------*/
@@ -1188,13 +1202,41 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function _getUrlParam() {
           _getUrlParam2.call(this);
         }
+        /*------------
+            微信API
+        -------------*/
+
+      }, {
+        key: "_configJSSDK",
+        value: function _configJSSDK(errorCb, successCb) {
+          _configJSSDK2.call(this, errorCb, successCb);
+        }
+        /*------------
+            授权API
+        -------------*/
+
+      }, {
+        key: "_getOAuthCode",
+        value: function _getOAuthCode() {
+          _getOAuthCode2.call(this);
+        }
+      }, {
+        key: "_getWXInfo",
+        value: function _getWXInfo(code, errorCb, successCb) {
+          _getWXInfo2.call(this, code, errorCb, successCb);
+        }
+      }, {
+        key: "debug",
+        set: function set(bool) {
+          this._debug = bool;
+        }
       }]);
 
       return Sdk;
     }();
 
     module.exports = Sdk;
-  }, { "./APIAbstract/APIAbstract": 1, "./Canvas_Item/Canvas_Item": 5, "./Share_Item/Share_Item": 37, "./Util/Util": 44, "./_api_config": 46, "./_getUrlParam": 47, "./_init": 48, "./wechat/_configJSSDK": 50, "./wechat/_setWechatShare": 51 }], 37: [function (require, module, exports) {
+  }, { "./APIAbstract/APIAbstract": 1, "./Canvas_Item/Canvas_Item": 5, "./Share_Item/Share_Item": 37, "./Util/Util": 49, "./_addPoint": 51, "./_api_config": 52, "./_checkOpenId": 53, "./_getRank": 54, "./_getSubmission": 55, "./_getSubmissionByPid": 56, "./_getUrlParam": 57, "./_init": 58, "./auth/_getOAuthCode": 59, "./auth/_getWXInfo": 60, "./wechat/_configJSSDK": 62, "./wechat/_setWechatShare": 63 }], 37: [function (require, module, exports) {
     var Util = require('../Util/Util'),
         _drawCanvas4 = require('./_drawCanvas'),
         _genQRCode2 = require('./_genQRCode'),
@@ -1274,7 +1316,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }();
 
     module.exports = Share_Item;
-  }, { "../Util/Util": 44, "./_create": 38, "./_drawCanvas": 39, "./_genQRCode": 40, "./_init": 41, "./_loadImg": 42, "./_sodaImg_base64": 43 }], 38: [function (require, module, exports) {
+  }, { "../Util/Util": 49, "./_create": 38, "./_drawCanvas": 39, "./_genQRCode": 40, "./_init": 41, "./_loadImg": 42, "./_sodaImg_base64": 43 }], 38: [function (require, module, exports) {
     function _create(url, src, cb) {
       var _this11 = this;
 
@@ -1368,7 +1410,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = _genQRCode;
-  }, { "qrcode": 55 }], 41: [function (require, module, exports) {
+  }, { "qrcode": 67 }], 41: [function (require, module, exports) {
     function _init() {
       var _this14 = this;
 
@@ -1404,6 +1446,206 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   }, {}], 43: [function (require, module, exports) {
     module.exports = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAArUAAANkCAMAAACeayJNAAAC91BMVEUAAAABAAABAAACBQMBAwIBAAABBAIBAQEBAAAAAAAAAAAAAAADAgIBAAAAAAAAAAACAQEBAAACAQEAAAAAAAAAAAAAAAABAQEDAgIAAAACAgIAAAAAAAAAAAABAAABAQFLjnP19fWZmZkRGBX////29vY3Nzf8/PzW0dH////s6usOaEOlpaUHLh79/Pz+/v7m5ebIysmysbJYV1doaGhHR0evr6/////8/Pzb2tv//v7+/f6Hh4cRakX////BwMH//v7j4+P///8OaENCd2DEw8PCwsJ3d3f+/f7////q6urHxsaTk5MOaEMLUTR8fHyzsrIOaEM0NDQOaEPBwcFgXl5gm4NRkncOaEM0NDSMiopoaGiCgID///8OaEPstdIHAwPv7+45NjZ7eXn23er88fb8+/vtutWMior+/v73+vitq6v34u3z9/T77PP55/ATa0bg6+e+vL0gclBZV1ebmZvNy8z99vn00+RwpY9raGjsBRkuelsYbkvyzuH4BCcXFBTv9PHvwtrC2dGe+P/n8e312Ofg3t610cSjxrhBiGtKR0eK8P0pdVbhABfl7OCav7ApJSW81cs7fmPS492uy8B+rprY5+HZq8O6jqXxyN3c5NTgw9DDlqzo8Obs7t/XAxPqtNHksczMqbuHtKH5Ag/p5OXf6NzK3dXm59S6o7CQuahZ4P6d7PrO4dainKO16vTb4cfVtsTMnLXvoKldmoFWlXt06f/j0t370NSMlJRmn4j2VmD1PFDKAQ26AgnR5/f1xsfzjphPf20yLy+y+/8xzf+//P772t/U38H7KDarAQg/y/H09elwioJ0cnIXzP9VweHs2tf7ucRihnn85Ob4dn+9Gx8puv3e9/iD1emk4eip19fZ2dSwuLmnpqeFhITwZ3LjJDaXAQXP//8/3P9w2fHRfYTCO0EsquOty9DH4MPztraCkI7IWGNiX19znrzN2bPD1K56xti4iYcRDQ19AAygbX5EQUEhHR2aj42pWGBpMj6ZOT0XAAAAXXRSTlMAAgYKDhMYuh2LqqIwKniwNia1gpRtv0IiZk87XkibV/4q38eXFcc3/k/77d7Wt6jz6ObU0cy8aF3z8eLcz0Psw619XBfNed7TysSHdy/ut5uThHlgTNetpZleWEqUjnqsAAAXPUlEQVR42uzBgQAAAACAoP2pF6kCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGD24EAAAAAAAMj/tRFUVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVYU9OBAAAAAAAPJ/bQRVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVWEPDgQAAAAAgPxfG0FVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVdiDAwEAAAAAIP/XRlBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVFfbgQAAAAAAAyP+1EVRVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVhT04EAAAAAAA8n9tBFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVYQ8OBAAAAACA/F8bQVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV2IMDAQAAAAAg/9dGUFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVYd9OXpsIwzCAT933Xdw1ggsuuCEudcUNRUVcUEHe50OwUyY0OnFAG8gIsUSSQCBkFW+tPZQW2lN6aI6959Sz/gX9H/ym800+im1vEwu+v0ta0t4eXp7v/WYYY4wxxhj7nxy+fvHQzSudJJmd908dunTQYGwxO3rrvkVW14d333p7v/T2fut5/5mo89TFw/K7FbfvGIwtMgdvXSHzQ+9XMUv3j2/vLTr76hpw4rbB2OLR0XH0FJk9P8Qc+oebSTtScABc43HLFokOmdmb1NXbLeY04TYqMSIb0mODsUWgo2PJ4dPU9UXMZzJCUgwenrVsEZCZXXqp0+wV8ys1SKpBch/wRoH9Ozqz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';
   }, {}], 44: [function (require, module, exports) {
+    var _checkIsMember = require('./_checkIsMember'),
+        _editImg = require('./_editImg'),
+        _getAuthCode = require('./_getAuthCode'),
+        _submit = require('./_submit');
+
+    var SubmissionHandler = function () {
+      function SubmissionHandler(rawData, model) {
+        _classCallCheck(this, SubmissionHandler);
+
+        this._debug = false;
+        this._rawData = rawData;
+        this._memberTel = null;
+        this._authCode = null;
+        this._model = model;
+      }
+
+      _createClass(SubmissionHandler, [{
+        key: "submit",
+        value: function submit(errorCb, successCb) {
+          _submit.call(this, errorCb, successCb);
+        }
+      }, {
+        key: "editImg",
+        value: function editImg(base64Img, errorCb, successCb) {
+          _editImg.call(this, base64Img, errorCb, successCb);
+        }
+      }, {
+        key: "getAuthCode",
+        value: function getAuthCode(tel, errorCb, successCb) {
+          _getAuthCode.call(this, tel, errorCb, successCb);
+        }
+      }, {
+        key: "debug",
+        set: function set(bool) {
+          this._debug = bool;
+        }
+      }, {
+        key: "isMember",
+        get: function get() {
+          return _checkIsMember.call(this);
+        }
+      }, {
+        key: "hasAddress",
+        get: function get() {
+          return !!this._rawData.address;
+        }
+      }, {
+        key: "tel",
+        get: function get() {
+          return this._memberTel;
+        },
+        set: function set(tel) {
+          this._memberTel = tel;
+        }
+      }, {
+        key: "authCode",
+        get: function get() {
+          return this._authCode;
+        },
+        set: function set(authCode) {
+          this._authCode = authCode;
+        }
+      }, {
+        key: "name",
+        get: function get() {
+          return this._rawData.name;
+        },
+        set: function set(str) {
+          this._rawData.name = str;
+        }
+      }, {
+        key: "address",
+        get: function get() {
+          return this._rawData.address;
+        },
+        set: function set(str) {
+          this._rawData.address = str;
+        }
+      }, {
+        key: "phone",
+        get: function get() {
+          return this._rawData.phone;
+        },
+        set: function set(str) {
+          this._rawData.phone = str;
+        }
+      }, {
+        key: "section",
+        get: function get() {
+          return this._rawData.section;
+        },
+        set: function set(str) {
+          this._rawData.section = str;
+        }
+      }]);
+
+      return SubmissionHandler;
+    }();
+
+    ;
+
+    module.exports = SubmissionHandler;
+  }, { "./_checkIsMember": 45, "./_editImg": 46, "./_getAuthCode": 47, "./_submit": 48 }], 45: [function (require, module, exports) {
+    function _checkIsMember() {
+      if (this._rawData.isblind == '0' && this._rawData.ismember == '0' && this._rawData.isregister == '0') return false;
+
+      return true;
+    };
+
+    module.exports = _checkIsMember;
+  }, {}], 46: [function (require, module, exports) {
+    function _editImg(img, errorCb, successCb) {
+      var _this16 = this;
+
+      this._model.request('sodaEditImg', { post: { img: img } }, function (data) {
+        if (_this16._debug) console.log('sodaEditImg', data);
+
+        if (data.error_code == '200') {
+          successCb();
+        } else {
+          errorCb(data.error_code);
+        }
+      });
+    };
+
+    module.exports = _editImg;
+  }, {}], 47: [function (require, module, exports) {
+    function _getAuthCode(tel, errorCb, successCb) {
+      var _this17 = this;
+
+      this.authCode = null;
+      this.tel = tel;
+
+      this._model.request('sendCode', { post: { tel: tel } }, function (data) {
+        if (_this17._debug) console.log('sendCode', data);
+
+        if (data.error_code == '200') {
+          successCb();
+        } else {
+          errorCb(data.error_code);
+        }
+      });
+    };
+
+    module.exports = _getAuthCode;
+  }, {}], 48: [function (require, module, exports) {
+    var MSG = {
+      "0": "input error",
+      "1": "api updateInfo error",
+      "2": "api member error"
+    };
+
+    function _submit(errorCb, successCb) {
+      var _this18 = this;
+
+      var propNames = ['name', 'address', 'phone', 'section'],
+          post = {},
+          isReqeust = true;
+
+      var check = function check() {
+        if (_this18.isMember && _this18.hasAddress) successCb();
+      };
+
+      if (!this.isMember) {
+        propNames.push('tel');
+        propNames.push('authCode');
+      }
+
+      propNames.forEach(function (prop) {
+        if (!_this18[prop]) return isReqeust = false;
+        post[prop] = _this18[prop];
+      });
+
+      if (!isReqeust) return errorCb({ api_error_code: '', msg: { id: "0", msg_list: MSG } });
+
+      if (this.isMember) {
+        this._model.request('sodaUpdateInfo', { post: post }, function (data) {
+          if (_this18._debug) console.log('sodaUpdateInfo', data);
+
+          if (data.error_code == '200') {
+            successCb();
+          } else {
+            errorCb({ api_error_code: data.error_code, msg: { id: "1", msg_list: MSG } });
+          }
+        });
+      } else {
+        this._model.request('sodaMember', { post: post }, function (data) {
+          if (_this18._debug) console.log('sodaMember', data);
+
+          if (data.error_code == '200') {
+            successCb();
+          } else {
+            errorCb({ api_error_code: data.error_code, msg: { id: "2", msg_list: MSG } });
+          }
+        });
+      }
+    };
+
+    module.exports = _submit;
+  }, {}], 49: [function (require, module, exports) {
     var _init_option = require('./_init_option');
 
     var Util = function () {
@@ -1422,7 +1664,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }();
 
     module.exports = Util;
-  }, { "./_init_option": 45 }], 45: [function (require, module, exports) {
+  }, { "./_init_option": 50 }], 50: [function (require, module, exports) {
     function _init_options(options) {
       for (var i in options) {
         if (i in this) this[i] = options[i];
@@ -1432,7 +1674,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = _init_options;
-  }, {}], 46: [function (require, module, exports) {
+  }, {}], 51: [function (require, module, exports) {
+    function _addPoint(errorCb, SuccessCb) {
+      var _this19 = this;
+
+      var sid = this._urlParam.sid;
+
+      this._models.app.request('sodaAddPoint', { post: { pid: sid } }, function (data) {
+        if (_this19._debug) console.log('sodaAddPoint', data);
+
+        if (data.error_code == '200') {
+          successCb(data.data);
+        } else {
+          errorCb(data.error_code);
+        }
+      });
+    };
+
+    module.exports = _addPoint;
+  }, {}], 52: [function (require, module, exports) {
     var config = {
       /*------------
           活动接口
@@ -1458,7 +1718,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           },
           sodaGetRank: {
             get: [],
-            post: []
+            post: ['pid']
           },
           sodaMember: {
             get: [],
@@ -1467,14 +1727,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           sendCode: {
             get: [],
             post: ['tel']
-          },
-          getOchirlyOauthCode: {
-            get: ['target'],
-            post: []
-          },
-          getOchirlyOpenIDInfoWithCode: {
-            get: [],
-            post: ['code', 'openidname']
           },
           sodaUpdateInfo: {
             get: [],
@@ -1500,16 +1752,162 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       wechat: {
         modelName: "ApiPublic",
         verbs: {
-          getJSApiConfig: {
+          getOchirlyJSApiConfig: {
             get: [],
             post: ['url']
+          }
+        }
+      },
+      /*------------
+          授权API
+      -------------*/
+      auth: {
+        modelName: "ApiOchirly",
+        verbs: {
+          getOchirlyOauthCode: {
+            get: ['target'],
+            post: []
+          },
+          getOchirlyOpenIDInfoWithCode: {
+            get: [],
+            post: ['code', 'openidname']
           }
         }
       }
     };
 
     module.exports = config;
-  }, {}], 47: [function (require, module, exports) {
+  }, {}], 53: [function (require, module, exports) {
+    var ERROR = {
+      "0": "getWXInfo error",
+      "1": "jsSDK init error"
+    };
+
+    function _checkOpenId(errorCb, successCb) {
+      var _this20 = this;
+
+      var initJSSDK = function initJSSDK() {
+        _this20._configJSSDK(errorCb, successCb);
+      };
+
+      this._models.app.request('sodaStart', {}, function (data) {
+        if (data.error_code !== '200') {
+          _this20._getOAuthCode();
+          _this20._getWXInfo(_this20._urlParam.code, function (data) {
+            errorCb({ api_error_code: data.code, msg: { id: 0, messageList: MSG } });
+          }, function (data) {
+            initJSSDK();
+          });
+        } else {
+          initJSSDK();
+        }
+      });
+    };
+
+    module.exports = _checkOpenId;
+  }, {}], 54: [function (require, module, exports) {
+    var RANK_STRUCT = {
+      'header': 'headurl',
+      'rank': '',
+      'name': 'nickname',
+      'ticket': 'votecnt',
+      'img': 'img'
+    };
+
+    function _getRank(errorCb, successCb) {
+      var _this21 = this;
+
+      var parseRank = function parseRank(data) {
+        var res = Object.assign({}, RANK_STRUCT);
+        for (var i in res) {
+          if (res[i] && data[res[i]]) res[i] = data[res[i]];
+        }
+        res.ticket = +res.ticket;
+        return res;
+      };
+
+      var make = function make(data) {
+        var res = { nowRank: null, rankList: [] };
+
+        if (data.mySubmission && data.myRank) {
+          res.nowRank = parseRank(data.mySubmission);
+          res.nowRank.rank = +data.myRank;
+        }
+
+        if (data.rank && data.rank.length > 0) data.rank.forEach(function (rank, index) {
+          var obj = parseRank(rank);
+          obj.rank = index + 1;
+          res.rankList.push(obj);
+        });
+
+        successCb(res);
+      };
+      if (this._urlParam.sid) {
+        this._models.app.request('sodaGetRank', { post: { pid: this._urlParam.sid } }, function (data) {
+          if (_this21._debug) console.log('sodaGetRank', data);
+
+          if (data.error_code == '200') {
+            make(data.data);
+          } else {
+            errorCb(data.error_code);
+          }
+        });
+      } else {
+        this._models.app.request('sodaGetRank', {}, function (data) {
+          if (_this21._debug) console.log('sodaGetRank', data);
+
+          if (data.error_code == '200') {
+            make(data.data);
+          } else {
+            errorCb(data.error_code);
+          }
+        });
+      }
+    };
+
+    module.exports = _getRank;
+  }, {}], 55: [function (require, module, exports) {
+    var SubmissionHandler = require('./SubmissionHandler/SubmissionHandler');
+
+    function _getSubmission(errorCb, successCb) {
+      var _this22 = this;
+
+      this._models.app.request('sodaStart', {}, function (data) {
+        if (_this22._debug) console.log('_getSubmission sodaStart', data);
+
+        if (data.error_code == '200') {
+          var handler = new SubmissionHandler(data.data.submission, _this22._models.app);
+
+          handler.debug = _this22._debug;
+
+          _this22._submissionHandler = handler;
+          successCb(handler);
+        } else {
+          errorCb(data.error_code);
+        }
+      });
+    };
+
+    module.exports = _getSubmission;
+  }, { "./SubmissionHandler/SubmissionHandler": 44 }], 56: [function (require, module, exports) {
+    function _getSubmissionByPid(errorCb, successCb) {
+      var _this23 = this;
+
+      var sid = this._urlParam.sid;
+
+      this._models.app.request('sodaGetSubmissionByPid', { post: { pid: sid } }, function (data) {
+        if (_this23._debug) console.log('sodaGetSubmissionByPid', data);
+
+        if (data.error_code == '200') {
+          successCb(data.data);
+        } else {
+          errorCb(data.error_code);
+        }
+      });
+    };
+
+    module.exports = _getSubmissionByPid;
+  }, {}], 57: [function (require, module, exports) {
     function _getUrlParam() {
       var url_template = this._url_template,
           keys = [];
@@ -1554,7 +1952,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }
 
     module.exports = _getUrlParam;
-  }, {}], 48: [function (require, module, exports) {
+  }, {}], 58: [function (require, module, exports) {
     function _init(API) {
       for (var m in this._api_config) {
         this._models[m] = new API(this._api_host, this._token, this._api_config[m]);
@@ -1562,7 +1960,36 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = _init;
-  }, {}], 49: [function (require, module, exports) {
+  }, {}], 59: [function (require, module, exports) {
+    function _getOAuthCode() {
+      var url = this._models.auth.getAPIURL('getOchirlyOauthCode', {
+        get: {
+          target: window.location.href //.replace(window.location.origin,'')
+        }
+      });
+
+      if (this._urlParam.test == '1' || this._urlParam.code) return console.log(url);
+
+      window.location.href = url;
+    };
+
+    module.exports = _getOAuthCode;
+  }, {}], 60: [function (require, module, exports) {
+    function _getWXInfo(code, errorCb, successCb) {
+      if (code.indexOf('?state') !== -1) code = code.substring(0, code.indexOf('?state'));
+
+      this._models.auth.request('getOchirlyOpenIDInfoWithCode', { get: {}, post: { code: code, openidname: 'wecha_id_info' } }, function (data) {
+        console.log('getOchirlyOpenIDInfoWithCode', data);
+        if (data.error_code == '200') {
+          successCb(data.data);
+        } else {
+          errorCb(data.error_code);
+        }
+      });
+    };
+
+    module.exports = _getWXInfo;
+  }, {}], 61: [function (require, module, exports) {
     var Canvas_Item = require('../Canvas_Item/Canvas_Item'),
         Sdk = require('../Sdk');
 
@@ -1571,6 +1998,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         sdk = new Sdk(),
         item = sdk.createCanvas(container);
 
+    sdk.debug = true;
     document.body.style.margin = 0;
     container.style.position = 'absolute';
     img.style.background = container.style.background = 'rgba(1,0,0,.7)';
@@ -1584,7 +2012,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     window.item = item;
     window.sdk = sdk;
-  }, { "../Canvas_Item/Canvas_Item": 5, "../Sdk": 36 }], 50: [function (require, module, exports) {
+  }, { "../Canvas_Item/Canvas_Item": 5, "../Sdk": 36 }], 62: [function (require, module, exports) {
     var MSG = {
       "0": "getJSApiConfig error"
     };
@@ -1592,7 +2020,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var API_LIST = ["onMenuShareTimeline", "onMenuShareAppMessage", "showAllNonBaseMenuItem"];
 
     function _configJSSDK(errorCb, successCb) {
-      var _this16 = this;
+      var _this24 = this;
 
       var url = window.location.href.split('#')[0];
 
@@ -1610,10 +2038,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       var config = function config() {
         var jsApi = {
           debug: false, //this._debug, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-          appId: _this16._jsSDKConfig.appid, // 必填，公众号的唯一标识
-          timestamp: _this16._jsSDKConfig.timestamp, // 必填，生成签名的时间戳
-          nonceStr: _this16._jsSDKConfig.noncestr, // 必填，生成签名的随机串
-          signature: _this16._jsSDKConfig.signature, // 必填，签名，见附录1
+          appId: _this24._jsSDKConfig.appid, // 必填，公众号的唯一标识
+          timestamp: _this24._jsSDKConfig.timestamp, // 必填，生成签名的时间戳
+          nonceStr: _this24._jsSDKConfig.noncestr, // 必填，生成签名的随机串
+          signature: _this24._jsSDKConfig.signature, // 必填，签名，见附录1
           jsApiList: API_LIST //  ,"hideMenuItems"必填，需要使用的JS接口列表，所有JS接口列表见附录2  
         };
 
@@ -1621,11 +2049,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         //init_statHandler();
       };
 
-      this._models.wechat.request('getJSApiConfig', { post: { url: url } }, function (data) {
-        if (_this16._debug) console.log('getJSApiConfig', data);
+      this._models.wechat.request('getOchirlyJSApiConfig', { post: { url: url } }, function (data) {
+        if (_this24._debug) console.log('getOchirlyJSApiConfig', data);
 
         if (data.error_code == '200') {
-          _this16._jsSDKConfig = data.data;
+          _this24._jsSDKConfig = data.data;
           config();
           successCb();
         } else {
@@ -1635,7 +2063,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = _configJSSDK;
-  }, {}], 51: [function (require, module, exports) {
+  }, {}], 63: [function (require, module, exports) {
     function setWechatShare(title, desc, link, imgUrl, errorCb, successCb) {
       var set = function set() {
         wx.onMenuShareTimeline({
@@ -1674,7 +2102,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = setWechatShare;
-  }, {}], 52: [function (require, module, exports) {
+  }, {}], 64: [function (require, module, exports) {
     'use strict';
 
     var G = require('window-or-global');
@@ -1682,7 +2110,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     module.exports = function () {
       return typeof G.Promise === 'function' && typeof G.Promise.prototype.then === 'function';
     };
-  }, { "window-or-global": 82 }], 53: [function (require, module, exports) {
+  }, { "window-or-global": 94 }], 65: [function (require, module, exports) {
     'use strict';
 
     /******************************************************************************
@@ -1840,7 +2268,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     if (typeof module !== 'undefined') {
       module.exports = dijkstra;
     }
-  }, {}], 54: [function (require, module, exports) {
+  }, {}], 66: [function (require, module, exports) {
 
     /*!
     @fileoverview gl-matrix - High performance matrix and vector operations
@@ -2121,7 +2549,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           /******/ })
       );
     });
-  }, {}], 55: [function (require, module, exports) {
+  }, {}], 67: [function (require, module, exports) {
     var canPromise = require('can-promise');
     var QRCode = require('./core/qrcode');
     var CanvasRenderer = require('./renderer/canvas');
@@ -2196,7 +2624,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     exports.toString = renderCanvas.bind(null, function (data, _, opts) {
       return SvgRenderer.render(data, opts);
     });
-  }, { "./core/qrcode": 71, "./renderer/canvas": 77, "./renderer/svg-tag.js": 78, "can-promise": 52 }], 56: [function (require, module, exports) {
+  }, { "./core/qrcode": 83, "./renderer/canvas": 89, "./renderer/svg-tag.js": 90, "can-promise": 64 }], 68: [function (require, module, exports) {
     /**
      * Alignment pattern are fixed reference pattern in defined positions
      * in a matrix symbology, which enables the decode software to re-synchronise
@@ -2281,7 +2709,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       return coords;
     };
-  }, { "./utils": 75 }], 57: [function (require, module, exports) {
+  }, { "./utils": 87 }], 69: [function (require, module, exports) {
     var Mode = require('./mode');
 
     /**
@@ -2336,7 +2764,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = AlphanumericData;
-  }, { "./mode": 68 }], 58: [function (require, module, exports) {
+  }, { "./mode": 80 }], 70: [function (require, module, exports) {
     function BitBuffer() {
       this.buffer = [];
       this.length = 0;
@@ -2374,7 +2802,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = BitBuffer;
-  }, {}], 59: [function (require, module, exports) {
+  }, {}], 71: [function (require, module, exports) {
     var Buffer = require('../utils/buffer');
 
     /**
@@ -2444,7 +2872,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = BitMatrix;
-  }, { "../utils/buffer": 80 }], 60: [function (require, module, exports) {
+  }, { "../utils/buffer": 92 }], 72: [function (require, module, exports) {
     var Buffer = require('../utils/buffer');
     var Mode = require('./mode');
 
@@ -2472,7 +2900,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = ByteData;
-  }, { "../utils/buffer": 80, "./mode": 68 }], 61: [function (require, module, exports) {
+  }, { "../utils/buffer": 92, "./mode": 80 }], 73: [function (require, module, exports) {
     var ECLevel = require('./error-correction-level');
 
     var EC_BLOCKS_TABLE = [
@@ -2528,7 +2956,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return undefined;
       }
     };
-  }, { "./error-correction-level": 62 }], 62: [function (require, module, exports) {
+  }, { "./error-correction-level": 74 }], 74: [function (require, module, exports) {
     exports.L = { bit: 1 };
     exports.M = { bit: 0 };
     exports.Q = { bit: 3 };
@@ -2578,7 +3006,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         return defaultValue;
       }
     };
-  }, {}], 63: [function (require, module, exports) {
+  }, {}], 75: [function (require, module, exports) {
     var getSymbolSize = require('./utils').getSymbolSize;
     var FINDER_PATTERN_SIZE = 7;
 
@@ -2600,7 +3028,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       // bottom-left
       [0, size - FINDER_PATTERN_SIZE]];
     };
-  }, { "./utils": 75 }], 64: [function (require, module, exports) {
+  }, { "./utils": 87 }], 76: [function (require, module, exports) {
     var Utils = require('./utils');
 
     var G15 = 1 << 10 | 1 << 8 | 1 << 5 | 1 << 4 | 1 << 2 | 1 << 1 | 1 << 0;
@@ -2630,7 +3058,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       // will result in an all-zero data string
       return (data << 10 | d) ^ G15_MASK;
     };
-  }, { "./utils": 75 }], 65: [function (require, module, exports) {
+  }, { "./utils": 87 }], 77: [function (require, module, exports) {
     var Buffer = require('../utils/buffer');
 
     var EXP_TABLE = new Buffer(512);
@@ -2704,7 +3132,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       // @see {@link initTables}
       return EXP_TABLE[LOG_TABLE[x] + LOG_TABLE[y]];
     };
-  }, { "../utils/buffer": 80 }], 66: [function (require, module, exports) {
+  }, { "../utils/buffer": 92 }], 78: [function (require, module, exports) {
     var Mode = require('./mode');
     var Utils = require('./utils');
 
@@ -2757,7 +3185,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = KanjiData;
-  }, { "./mode": 68, "./utils": 75 }], 67: [function (require, module, exports) {
+  }, { "./mode": 80, "./utils": 87 }], 79: [function (require, module, exports) {
     /**
      * Data mask pattern reference
      * @type {Object}
@@ -2992,7 +3420,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       return bestPattern;
     };
-  }, {}], 68: [function (require, module, exports) {
+  }, {}], 80: [function (require, module, exports) {
     var Version = require('./version');
     var Regex = require('./regex');
 
@@ -3151,7 +3579,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         return defaultValue;
       }
     };
-  }, { "./regex": 73, "./version": 76 }], 69: [function (require, module, exports) {
+  }, { "./regex": 85, "./version": 88 }], 81: [function (require, module, exports) {
     var Mode = require('./mode');
 
     function NumericData(data) {
@@ -3195,7 +3623,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = NumericData;
-  }, { "./mode": 68 }], 70: [function (require, module, exports) {
+  }, { "./mode": 80 }], 82: [function (require, module, exports) {
     var Buffer = require('../utils/buffer');
     var GF = require('./galois-field');
 
@@ -3261,7 +3689,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       return poly;
     };
-  }, { "../utils/buffer": 80, "./galois-field": 65 }], 71: [function (require, module, exports) {
+  }, { "../utils/buffer": 92, "./galois-field": 77 }], 83: [function (require, module, exports) {
     var Buffer = require('../utils/buffer');
     var Utils = require('./utils');
     var ECLevel = require('./error-correction-level');
@@ -3752,7 +4180,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       return createSymbol(data, version, errorCorrectionLevel, mask);
     };
-  }, { "../utils/buffer": 80, "./alignment-pattern": 56, "./bit-buffer": 58, "./bit-matrix": 59, "./error-correction-code": 61, "./error-correction-level": 62, "./finder-pattern": 63, "./format-info": 64, "./mask-pattern": 67, "./mode": 68, "./reed-solomon-encoder": 72, "./segments": 74, "./utils": 75, "./version": 76, "isarray": 81 }], 72: [function (require, module, exports) {
+  }, { "../utils/buffer": 92, "./alignment-pattern": 68, "./bit-buffer": 70, "./bit-matrix": 71, "./error-correction-code": 73, "./error-correction-level": 74, "./finder-pattern": 75, "./format-info": 76, "./mask-pattern": 79, "./mode": 80, "./reed-solomon-encoder": 84, "./segments": 86, "./utils": 87, "./version": 88, "isarray": 93 }], 84: [function (require, module, exports) {
     var Buffer = require('../utils/buffer');
     var Polynomial = require('./polynomial');
 
@@ -3812,7 +4240,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = ReedSolomonEncoder;
-  }, { "../utils/buffer": 80, "./polynomial": 70 }], 73: [function (require, module, exports) {
+  }, { "../utils/buffer": 92, "./polynomial": 82 }], 85: [function (require, module, exports) {
     var numeric = '[0-9]+';
     var alphanumeric = '[A-Z $%*+\\-./:]+';
     var kanji = '(?:[u3000-u303F]|[u3040-u309F]|[u30A0-u30FF]|' + '[uFF00-uFFEF]|[u4E00-u9FAF]|[u2605-u2606]|[u2190-u2195]|u203B|' + '[u2010u2015u2018u2019u2025u2026u201Cu201Du2225u2260]|' + '[u0391-u0451]|[u00A7u00A8u00B1u00B4u00D7u00F7])+';
@@ -3841,7 +4269,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     exports.testAlphanumeric = function testAlphanumeric(str) {
       return TEST_ALPHANUMERIC.test(str);
     };
-  }, {}], 74: [function (require, module, exports) {
+  }, {}], 86: [function (require, module, exports) {
     var Mode = require('./mode');
     var NumericData = require('./numeric-data');
     var AlphanumericData = require('./alphanumeric-data');
@@ -4154,7 +4582,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     exports.rawSplit = function rawSplit(data) {
       return exports.fromArray(getSegmentsFromString(data, Utils.isKanjiModeEnabled()));
     };
-  }, { "./alphanumeric-data": 57, "./byte-data": 60, "./kanji-data": 66, "./mode": 68, "./numeric-data": 69, "./regex": 73, "./utils": 75, "dijkstrajs": 53 }], 75: [function (require, module, exports) {
+  }, { "./alphanumeric-data": 69, "./byte-data": 72, "./kanji-data": 78, "./mode": 80, "./numeric-data": 81, "./regex": 85, "./utils": 87, "dijkstrajs": 65 }], 87: [function (require, module, exports) {
     var toSJISFunction;
     var CODEWORDS_COUNT = [0, // Not used
     26, 44, 70, 100, 134, 172, 196, 242, 292, 346, 404, 466, 532, 581, 655, 733, 815, 901, 991, 1085, 1156, 1258, 1364, 1474, 1588, 1706, 1828, 1921, 2051, 2185, 2323, 2465, 2611, 2761, 2876, 3034, 3196, 3362, 3532, 3706];
@@ -4213,7 +4641,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     exports.toSJIS = function toSJIS(kanji) {
       return toSJISFunction(kanji);
     };
-  }, {}], 76: [function (require, module, exports) {
+  }, {}], 88: [function (require, module, exports) {
     var Utils = require('./utils');
     var ECCode = require('./error-correction-code');
     var ECLevel = require('./error-correction-level');
@@ -4387,7 +4815,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       return version << 12 | d;
     };
-  }, { "./error-correction-code": 61, "./error-correction-level": 62, "./mode": 68, "./utils": 75, "isarray": 81 }], 77: [function (require, module, exports) {
+  }, { "./error-correction-code": 73, "./error-correction-level": 74, "./mode": 80, "./utils": 87, "isarray": 93 }], 89: [function (require, module, exports) {
     var Utils = require('./utils');
 
     function clearCanvas(ctx, canvas, size) {
@@ -4451,7 +4879,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       return canvasEl.toDataURL(type, rendererOpts.quality);
     };
-  }, { "./utils": 79 }], 78: [function (require, module, exports) {
+  }, { "./utils": 91 }], 90: [function (require, module, exports) {
     var Utils = require('./utils');
 
     function getColorAttrib(color, attrib) {
@@ -4524,7 +4952,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       return svgTag;
     };
-  }, { "./utils": 79 }], 79: [function (require, module, exports) {
+  }, { "./utils": 91 }], 91: [function (require, module, exports) {
     function hex2rgba(hex) {
       if (typeof hex !== 'string') {
         throw new Error('Color should be defined as hex string');
@@ -4613,7 +5041,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }
     };
-  }, {}], 80: [function (require, module, exports) {
+  }, {}], 92: [function (require, module, exports) {
     /**
      * Implementation of a subset of node.js Buffer methods for the browser.
      * Based on https://github.com/feross/buffer
@@ -5104,16 +5532,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     module.exports = Buffer;
-  }, { "isarray": 81 }], 81: [function (require, module, exports) {
+  }, { "isarray": 93 }], 93: [function (require, module, exports) {
     var toString = {}.toString;
 
     module.exports = Array.isArray || function (arr) {
       return toString.call(arr) == '[object Array]';
     };
-  }, {}], 82: [function (require, module, exports) {
+  }, {}], 94: [function (require, module, exports) {
     (function (global) {
       'use strict';
 
       module.exports = (typeof self === "undefined" ? "undefined" : _typeof(self)) === 'object' && self.self === self && self || (typeof global === "undefined" ? "undefined" : _typeof(global)) === 'object' && global.global === global && global || this;
     }).call(this, typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {});
-  }, {}] }, {}, [49]);
+  }, {}] }, {}, [61]);

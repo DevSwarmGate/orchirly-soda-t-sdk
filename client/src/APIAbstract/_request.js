@@ -8,7 +8,7 @@ function _request(verb,options,cb){
                  : this._verbs[verb].post;
 
         for (let i = 0;i < keys.length;i++) {
-            if(keys[i] && keys[i] in data){
+            if(keys[i] && data && keys[i] in data){
 
                 res += encodeURIComponent(keys[i])
                     +"="
