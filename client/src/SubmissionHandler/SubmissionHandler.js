@@ -4,12 +4,14 @@ const   _checkIsMember = require('./_checkIsMember'),
         _submit = require('./_submit');
 
 class SubmissionHandler{
-    constructor(rawData,model){
+    constructor(token,rawData,model,uploadModel){
         this._debug = false;
+        this._token = token;
         this._rawData = rawData;
         this._memberTel = null;
         this._authCode = null;
         this._model = model;
+        this._uploadModel = uploadModel;
     }
 
     set debug(bool){this._debug = bool;}

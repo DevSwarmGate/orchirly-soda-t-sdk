@@ -1452,14 +1452,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _submit = require('./_submit');
 
     var SubmissionHandler = function () {
-      function SubmissionHandler(rawData, model) {
+      function SubmissionHandler(token, rawData, model, uploadModel) {
         _classCallCheck(this, SubmissionHandler);
 
         this._debug = false;
+        this._token = token;
         this._rawData = rawData;
         this._memberTel = null;
         this._authCode = null;
         this._model = model;
+        this._uploadModel = uploadModel;
       }
 
       _createClass(SubmissionHandler, [{
@@ -1560,11 +1562,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     function _editImg(img, errorCb, successCb) {
       var _this16 = this;
 
-      this._model.request('sodaEditImg', { post: { img: img } }, function (data) {
-        if (_this16._debug) console.log('sodaEditImg', data);
+      var edit = function edit(src) {
+        _this16._model.request('sodaEditImg', { post: { img: src } }, function (data) {
+          if (_this16._debug) console.log('sodaEditImg', data);
+
+          if (data.error_code == '200') {
+            successCb();
+          } else {
+            errorCb(data.error_code);
+          }
+        });
+      };
+
+      this._uploadModel.request('uploadImgBase64', { post: { 'module_type': 'app', 'fileupload': img } }, function (data) {
+        if (_this16._debug) console.log('uploadImgBase64', data);
 
         if (data.error_code == '200') {
-          successCb();
+          var src = "/uploads/" + _this16._token + "/app/" + data.data.pic;
+          edit(src);
         } else {
           errorCb(data.error_code);
         }
@@ -1755,6 +1770,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           getOchirlyJSApiConfig: {
             get: [],
             post: ['url']
+          },
+          getJSApiConfig: {
+            get: [],
+            post: ['url']
+          },
+          uploadImgBase64: {
+            get: [],
+            post: ['module_type', 'fileupload']
           }
         }
       },
@@ -1876,7 +1899,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         if (_this22._debug) console.log('_getSubmission sodaStart', data);
 
         if (data.error_code == '200') {
-          var handler = new SubmissionHandler(data.data.submission, _this22._models.app);
+          var handler = new SubmissionHandler(_this22._token, data.data.submission, _this22._models.app, _this22._models.wechat);
 
           handler.debug = _this22._debug;
 
@@ -2049,8 +2072,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         //init_statHandler();
       };
 
-      this._models.wechat.request('getOchirlyJSApiConfig', { post: { url: url } }, function (data) {
-        if (_this24._debug) console.log('getOchirlyJSApiConfig', data);
+      this._models.wechat.request('getJSApiConfig', { post: { url: url } }, function (data) {
+        if (_this24._debug) console.log('getJSApiConfig', data);
 
         if (data.error_code == '200') {
           _this24._jsSDKConfig = data.data;
