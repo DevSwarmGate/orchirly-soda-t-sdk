@@ -1695,7 +1695,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     module.exports = _init_options;
   }, {}], 51: [function (require, module, exports) {
-    function _addPoint(errorCb, SuccessCb) {
+    function _addPoint(errorCb, successCb) {
       var _this19 = this;
 
       var sid = this._urlParam.sid;

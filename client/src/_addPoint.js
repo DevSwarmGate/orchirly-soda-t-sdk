@@ -1,4 +1,4 @@
-function _addPoint(errorCb,SuccessCb){
+function _addPoint(errorCb,successCb){
     let sid = this._urlParam.sid;
 
     this._models.app.request('sodaAddPoint',{post:{pid:sid}},(data)=>{
