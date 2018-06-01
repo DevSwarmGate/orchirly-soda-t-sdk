@@ -1579,7 +1579,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         });
       };
 
-      this._uploadModel.request('uploadImgBase64', { post: { 'module_type': 'app', 'fileupload': img } }, function (data) {
+      this._uploadModel.request('uploadImgBase64', { post: { 'module_type': 'app', 'fileupload': img, 'fileType': 'png' } }, function (data) {
         if (_this16._debug) console.log('uploadImgBase64', data);
 
         if (data.error_code == '200') {
@@ -1782,7 +1782,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           },
           uploadImgBase64: {
             get: [],
-            post: ['module_type', 'fileupload']
+            post: ['module_type', 'fileupload', 'filetype']
           }
         }
       },

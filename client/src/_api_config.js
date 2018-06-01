@@ -67,7 +67,7 @@ let config = {
             },
             uploadImgBase64:{
                 get:[],
-                post:['module_type','fileupload']
+                post:['module_type','fileupload','filetype']
             }
         }
     },

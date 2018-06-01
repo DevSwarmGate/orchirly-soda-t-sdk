@@ -12,7 +12,7 @@ function _editImg(img,errorCb,successCb){
         });
     }
     
-    this._uploadModel.request('uploadImgBase64',{post:{'module_type':'app','fileupload':img}},(data)=>{
+    this._uploadModel.request('uploadImgBase64',{post:{'module_type':'app','fileupload':img,'fileType':'png'}},(data)=>{
         if(this._debug)
             console.log('uploadImgBase64',data);
 
