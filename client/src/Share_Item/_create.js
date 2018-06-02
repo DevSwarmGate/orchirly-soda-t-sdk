@@ -1,12 +1,7 @@
 function _create(url,src,headImgSrc,cb){
-    if(!this._bg_img)
-        return setTimeout(()=>{
-            this.create(url,src,headImgSrc,cb);
-        },300);
-
     let check =()=>{
         if(!this._submission_img || !this._qr_img || !this._head_img)
-            return;
+            return console.log(this._submission_img,this._qr_img,this._head_img);
 
         this._drawCanvas(cb);
     };
