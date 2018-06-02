@@ -21,9 +21,11 @@ class Share_Item{
         this._bg_img = null;
         this._soda_img = null;
         this._submission_img = null;
+        this._head_img = null;
 
         this._soda_src = SODA_SRC;
         this._submission_src = null;
+        this._head_img_src = null;
         this._bg_src = bgSrc;
         this._url = null;
 
@@ -33,7 +35,7 @@ class Share_Item{
     /*-------------------
         public method
     --------------------*/
-    create(url,submissionImgSrc,cb){_create.call(this,url,submissionImgSrc,cb);};
+    create(url,submissionImgSrc,headImgSrc,cb){_create.call(this,url,submissionImgSrc,headImgSrc,cb);};
     /*-------------------
         private method
     --------------------*/

@@ -1,5 +1,6 @@
-const   TOP_RATIO =  0.15,
-        LEFT_RATIO = 0.05;
+const   TOP_RATIO =  0.11,
+        LEFT_RATIO = 0.05,
+        HEAD_IMG_SIZE_RATIO = 0.13;
 
 function _drawCanvas(cb){
     let callCount = 0,
@@ -28,13 +29,25 @@ function _drawCanvas(cb){
         cb();
     };
 
+    let drawHeadImg = (cb)=>{
+        let pos = [42,1018],
+            size = HEAD_IMG_SIZE_RATIO * width
+
+        ctx.beginPath();
+        ctx.arc(0.5*size+pos[0], 0.5*size+pos[1], 0.5*size, 0, Math.PI * 2, false);
+        ctx.clip();
+        ctx.drawImage(this._head_img,pos[0],pos[1],size,size);
+        cb();
+    };
+
+
     let drawQR = (cb)=>{
-        ctx.drawImage(this._qr_img,540,845,100,100);
+        ctx.drawImage(this._qr_img,540,813,100,100);
         cb();
     };
 
     let run =()=>{
-        let callList = [drawBg,drawSub,drawSoda,drawQR];
+        let callList = [drawBg,drawSub,drawSoda,drawQR,drawHeadImg];
 
         
         callList[callCount].call(this,()=>{

@@ -1262,9 +1262,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this._bg_img = null;
         this._soda_img = null;
         this._submission_img = null;
+        this._head_img = null;
 
         this._soda_src = SODA_SRC;
         this._submission_src = null;
+        this._head_img_src = null;
         this._bg_src = bgSrc;
         this._url = null;
 
@@ -1278,8 +1280,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       _createClass(Share_Item, [{
         key: "create",
-        value: function create(url, submissionImgSrc, cb) {
-          _create.call(this, url, submissionImgSrc, cb);
+        value: function create(url, submissionImgSrc, headImgSrc, cb) {
+          _create.call(this, url, submissionImgSrc, headImgSrc, cb);
         }
       }, {
         key: "_init",
@@ -1317,13 +1319,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     module.exports = Share_Item;
   }, { "../Util/Util": 49, "./_create": 38, "./_drawCanvas": 39, "./_genQRCode": 40, "./_init": 41, "./_loadImg": 42, "./_sodaImg_base64": 43 }], 38: [function (require, module, exports) {
-    function _create(url, src, cb) {
+    function _create(url, src, headImgSrc, cb) {
       var _this11 = this;
 
       var check = function check() {
         if (!_this11._bg_img) return console.log('bg img error');
 
-        if (!_this11._submission_img || !_this11._qr_img) return;
+        if (!_this11._submission_img || !_this11._qr_img || !_this11._head_img) return;
 
         _this11._drawCanvas(cb);
       };
@@ -1333,13 +1335,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         check();
       });
 
+      this._loadImg(headImgSrc, function (img) {
+        _this11._head_img = img;
+        check();
+      });
+
       this._genQRCode(url, check.bind(this));
     };
 
     module.exports = _create;
   }, {}], 39: [function (require, module, exports) {
-    var TOP_RATIO = 0.15,
-        LEFT_RATIO = 0.05;
+    var TOP_RATIO = 0.11,
+        LEFT_RATIO = 0.05,
+        HEAD_IMG_SIZE_RATIO = 0.13;
 
     function _drawCanvas(cb) {
       var _this12 = this;
@@ -1370,13 +1378,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         cb();
       };
 
+      var drawHeadImg = function drawHeadImg(cb) {
+        var pos = [42, 1018],
+            size = HEAD_IMG_SIZE_RATIO * width;
+
+        ctx.beginPath();
+        ctx.arc(0.5 * size + pos[0], 0.5 * size + pos[1], 0.5 * size, 0, Math.PI * 2, false);
+        ctx.clip();
+        ctx.drawImage(_this12._head_img, pos[0], pos[1], size, size);
+        cb();
+      };
+
       var drawQR = function drawQR(cb) {
-        ctx.drawImage(_this12._qr_img, 540, 845, 100, 100);
+        ctx.drawImage(_this12._qr_img, 540, 813, 100, 100);
         cb();
       };
 
       var run = function run() {
-        var callList = [drawBg, drawSub, drawSoda, drawQR];
+        var callList = [drawBg, drawSub, drawSoda, drawQR, drawHeadImg];
 
         callList[callCount].call(_this12, function () {
           callCount += 1;
@@ -1564,6 +1583,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     module.exports = _checkIsMember;
   }, {}], 46: [function (require, module, exports) {
+    var MSG = {
+      "0": "editImg error",
+      "1": "upload submission img error",
+      "2": "getHeadImg error"
+    };
+
     function _editImg(img, errorCb, successCb) {
       var _this16 = this;
 
@@ -1572,9 +1597,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           if (_this16._debug) console.log('sodaEditImg', data);
 
           if (data.error_code == '200') {
+            getHeadImg();
+          } else {
+            errorCb({ api_error_code: data.error_code, msg: { id: "0", msg_list: MSG } });
+          }
+        });
+      };
+
+      var getHeadImg = function getHeadImg() {
+        _this16._uploadModel.request('uploadImgByLink', { post: { folder: 'headImg', link: this_rawData.headurl, format: 'jpeg' } }, function (data) {
+          if (_this16._debug) console.log(data);
+
+          if (data.error_code == '200') {
             successCb();
           } else {
-            errorCb(data.error_code);
+            errorCb({ api_error_code: data.error_code, msg: { id: "2", msg_list: MSG } });
           }
         });
       };
@@ -1586,7 +1623,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var src = "/uploads/" + _this16._token + "/app/" + data.data.pic;
           edit(src);
         } else {
-          errorCb(data.error_code);
+          errorCb({ api_error_code: data.error_code, msg: { id: "1", msg_list: MSG } });
         }
       });
     };
@@ -1783,6 +1820,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           uploadImgBase64: {
             get: [],
             post: ['module_type', 'fileupload', 'filetype']
+          },
+          uploadImgByLink: {
+            get: [],
+            post: ['folder', 'link', 'format']
           }
         }
       },
