@@ -2,7 +2,7 @@ const   Sdk = require('../Sdk');
 
 let img = document.querySelector('#canvas'),
     sdk = new Sdk(),
-    item = sdk.createShare('images/share_bg.png');
+    item = sdk.createShare();
 
 
 document.body.style.margin = 0;

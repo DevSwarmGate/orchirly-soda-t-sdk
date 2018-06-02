@@ -5,7 +5,8 @@ const   Util = require('../Util/Util'),
         _loadImg = require('./_loadImg'),
         _create = require('./_create');
 
-const   SODA_SRC = require('./_sodaImg_base64');
+const   SODA_SRC = require('./_sodaImg_base64'),
+        BG_SRC = require('./_bgImg_base64');
 
 const   RATIO = 2;
 
@@ -14,7 +15,7 @@ const   ELE_STYLE ={
 };
 
 class Share_Item{
-    constructor(bgSrc,option){
+    constructor(option){
         this._canvas = document.createElement('canvas');
         
         this._qr_img = null;
@@ -26,7 +27,7 @@ class Share_Item{
         this._soda_src = SODA_SRC;
         this._submission_src = null;
         this._head_img_src = null;
-        this._bg_src = bgSrc;
+        this._bg_src = BG_SRC;
         this._url = null;
 
         this._init_option(option);
