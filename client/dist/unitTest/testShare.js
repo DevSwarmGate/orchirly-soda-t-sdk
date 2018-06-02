@@ -1322,7 +1322,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     function _create(url, src, headImgSrc, cb) {
       var _this11 = this;
 
-      if (!this._bg_img) return setTimeOut(function () {
+      if (!this._bg_img) return setTimeout(function () {
         _this11.create(url, src, headImgSrc, cb);
       }, 300);
 

@@ -1,6 +1,6 @@
 function _create(url,src,headImgSrc,cb){
     if(!this._bg_img)
-        return setTimeOut(()=>{
+        return setTimeout(()=>{
             this.create(url,src,headImgSrc,cb);
         },300);
 
