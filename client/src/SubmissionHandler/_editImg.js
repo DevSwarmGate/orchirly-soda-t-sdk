@@ -11,6 +11,7 @@ function _editImg(img,errorCb,successCb){
                 console.log('sodaEditImg',data);
             
             if(data.error_code == '200'){
+                this._statHandler.markSubmit(this._rawData.sid);
                 this._rawData.img = data.data.submission.img;
                 getHeadImg();
             }else{
@@ -20,16 +21,6 @@ function _editImg(img,errorCb,successCb){
     }
     
     let getHeadImg = ()=>{
-        // this._uploadModel.request('uploadImgByLink',{post:{folder:'headImg',link:this._rawData.headurl,format:'jpeg'}},(data)=>{
-        //     if(this._debug)
-        //         console.log('uploadImgByLink',data);
-
-        //     if(data.error_code == '200'){
-        //         successCb({headImg:data.data.path,submissionImg:this._rawData.img});
-        //     }else{
-        //         errorCb({api_error_code:data.error_code,msg:{id:"2",msg_list:MSG}});
-        //     }
-        // });
         this.getHeadImg(
             (code)=>{
                 errorCb({api_error_code:code,msg:{id:"2",msg_list:MSG}});

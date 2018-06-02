@@ -1,4 +1,5 @@
 const   APIAbstract = require('./APIAbstract/APIAbstract'),
+        StatHandler = require('./StatHandler/StatHandler'),
         Canvas_Item = require('./Canvas_Item/Canvas_Item'),
         Share_Item = require('./Share_Item/Share_Item'),
         Util = require('./Util/Util');
@@ -33,9 +34,10 @@ class Sdk{
         this._canvas = null;
         this._share = null;
         this._submissionHandler = null;
+        this._statHandler = new StatHandler(SERVER_CONFIG.statFid);
 
         this._debug = false;
-        this._statFid = SERVER_CONFIG.statFid;
+        //this._statFid = SERVER_CONFIG.statFid;
         this._api_host = SERVER_CONFIG.host;
         this._token = SERVER_CONFIG.token;
         this._api_config = _api_config;

@@ -11,6 +11,7 @@ function _getSubmission(errorCb,successCb){
             handler.debug = this._debug;
             
             this._submissionHandler = handler;
+            
             successCb(handler);
         }else{
             errorCb(data.error_code);

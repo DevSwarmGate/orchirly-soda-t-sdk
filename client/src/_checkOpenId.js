@@ -8,6 +8,17 @@ function _checkOpenId(errorCb,successCb){
         this._configJSSDK(errorCb,successCb);
     };
 
+    let init_statHandler=()=>{
+        this._statHandler.onRequest=(fid,type,detail)=>{
+            this._models.stat.request('addSubmission',{get:{fid:fid},post:{type:type,detail:detail}},(data)=>{
+                if(this._debug)
+                    console.log('statHandler->addSubmission',data);
+            });
+        };
+
+        this._statHandler.markPV();
+    };
+
     this._models.app.request('sodaStart',{},(data)=>{
         if(data.error_code !=='200'){
             this._getOAuthCode();
@@ -18,6 +29,7 @@ function _checkOpenId(errorCb,successCb){
                 },
                 (data)=>{
                     initJSSDK();
+                    init_statHandler();
                 }
             );
         }else{

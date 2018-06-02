@@ -34,6 +34,7 @@ function _submit(errorCb,successCb){
                 console.log('sodaUpdateInfo',data);
             
             if(data.error_code == '200'){
+                this._statHandler.markOld();
                 successCb();
             }else{
                 errorCb({api_error_code:data.error_code,msg:{id:"1",msg_list:MSG}});
@@ -45,6 +46,7 @@ function _submit(errorCb,successCb){
                 console.log('sodaMember',data);
             
             if(data.error_code == '200'){
+                this._statHandler.markNew();
                 successCb();
             }else{
                 errorCb({api_error_code:data.error_code,msg:{id:"2",msg_list:MSG}});
