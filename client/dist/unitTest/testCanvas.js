@@ -1322,9 +1322,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     function _create(url, src, headImgSrc, cb) {
       var _this11 = this;
 
-      var check = function check() {
-        if (!_this11._bg_img) return console.log('bg img error');
+      if (!this._bg_img) return setTimeOut(function () {
+        _this11.create(url, src, headImgSrc, cb);
+      }, 300);
 
+      var check = function check() {
         if (!_this11._submission_img || !_this11._qr_img || !_this11._head_img) return;
 
         _this11._drawCanvas(cb);
