@@ -11,6 +11,7 @@ function _editImg(img,errorCb,successCb){
                 console.log('sodaEditImg',data);
             
             if(data.error_code == '200'){
+                this._rawData.img = data.data.submission.img;
                 getHeadImg();
             }else{
                 errorCb({api_error_code:data.error_code,msg:{id:"0",msg_list:MSG}});
@@ -19,19 +20,19 @@ function _editImg(img,errorCb,successCb){
     }
     
     let getHeadImg = ()=>{
-        this._uploadModel.request('uploadImgByLink',{post:{folder:'headImg',link:this_rawData.headurl,format:'jpeg'}},(data)=>{
+        this._uploadModel.request('uploadImgByLink',{post:{folder:'headImg',link:this._rawData.headurl,format:'jpeg'}},(data)=>{
             if(this._debug)
-                console.log(data);
+                console.log('uploadImgByLink',data);
 
             if(data.error_code == '200'){
-                successCb();
+                successCb({headImg:data.data.path,submissionImg:this._rawData.img});
             }else{
                 errorCb({api_error_code:data.error_code,msg:{id:"2",msg_list:MSG}});
             }
         });
     };
 
-    this._uploadModel.request('uploadImgBase64',{post:{'module_type':'app','fileupload':img,'fileType':'png'}},(data)=>{
+    this._uploadModel.request('uploadImgBase64',{post:{'module_type':'app','fileupload':img,'filetype':'png'}},(data)=>{
         if(this._debug)
             console.log('uploadImgBase64',data);
 

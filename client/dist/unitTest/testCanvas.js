@@ -1597,6 +1597,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           if (_this16._debug) console.log('sodaEditImg', data);
 
           if (data.error_code == '200') {
+            _this16._rawData.img = data.data.submission.img;
             getHeadImg();
           } else {
             errorCb({ api_error_code: data.error_code, msg: { id: "0", msg_list: MSG } });
@@ -1605,18 +1606,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       };
 
       var getHeadImg = function getHeadImg() {
-        _this16._uploadModel.request('uploadImgByLink', { post: { folder: 'headImg', link: this_rawData.headurl, format: 'jpeg' } }, function (data) {
-          if (_this16._debug) console.log(data);
+        _this16._uploadModel.request('uploadImgByLink', { post: { folder: 'headImg', link: _this16._rawData.headurl, format: 'jpeg' } }, function (data) {
+          if (_this16._debug) console.log('uploadImgByLink', data);
 
           if (data.error_code == '200') {
-            successCb();
+            successCb({ headImg: data.data.path, submissionImg: _this16._rawData.img });
           } else {
             errorCb({ api_error_code: data.error_code, msg: { id: "2", msg_list: MSG } });
           }
         });
       };
 
-      this._uploadModel.request('uploadImgBase64', { post: { 'module_type': 'app', 'fileupload': img, 'fileType': 'png' } }, function (data) {
+      this._uploadModel.request('uploadImgBase64', { post: { 'module_type': 'app', 'fileupload': img, 'filetype': 'png' } }, function (data) {
         if (_this16._debug) console.log('uploadImgBase64', data);
 
         if (data.error_code == '200') {
