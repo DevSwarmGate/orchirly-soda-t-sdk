@@ -20,16 +20,24 @@ function _editImg(img,errorCb,successCb){
     }
     
     let getHeadImg = ()=>{
-        this._uploadModel.request('uploadImgByLink',{post:{folder:'headImg',link:this._rawData.headurl,format:'jpeg'}},(data)=>{
-            if(this._debug)
-                console.log('uploadImgByLink',data);
+        // this._uploadModel.request('uploadImgByLink',{post:{folder:'headImg',link:this._rawData.headurl,format:'jpeg'}},(data)=>{
+        //     if(this._debug)
+        //         console.log('uploadImgByLink',data);
 
-            if(data.error_code == '200'){
-                successCb({headImg:data.data.path,submissionImg:this._rawData.img});
-            }else{
-                errorCb({api_error_code:data.error_code,msg:{id:"2",msg_list:MSG}});
+        //     if(data.error_code == '200'){
+        //         successCb({headImg:data.data.path,submissionImg:this._rawData.img});
+        //     }else{
+        //         errorCb({api_error_code:data.error_code,msg:{id:"2",msg_list:MSG}});
+        //     }
+        // });
+        this.getHeadImg(
+            (code)=>{
+                errorCb({api_error_code:code,msg:{id:"2",msg_list:MSG}});
+            },
+            (path)=>{
+                successCb({headImg:path,submissionImg:this._rawData.img})
             }
-        });
+        );
     };
 
     this._uploadModel.request('uploadImgBase64',{post:{'module_type':'app','fileupload':img,'filetype':'png'}},(data)=>{

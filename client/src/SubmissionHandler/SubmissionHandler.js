@@ -1,6 +1,7 @@
 const   _checkIsMember = require('./_checkIsMember'),
         _editImg = require('./_editImg'),
         _getAuthCode = require('./_getAuthCode'),
+        _getHeadImg = require('./_getHeadImg'),
         _submit = require('./_submit');
 
 class SubmissionHandler{
@@ -17,6 +18,7 @@ class SubmissionHandler{
     set debug(bool){this._debug = bool;}
 
     get img(){return this._rawData.img;}
+    get headImg(){}
     get isMember(){return _checkIsMember.call(this);}
     get hasAddress(){return !!this._rawData.address}
 
@@ -41,6 +43,7 @@ class SubmissionHandler{
     submit(errorCb,successCb){_submit.call(this,errorCb,successCb);}
     editImg(base64Img,errorCb,successCb){_editImg.call(this,base64Img,errorCb,successCb);}
     getAuthCode(tel,errorCb,successCb){_getAuthCode.call(this,tel,errorCb,successCb);}
+    getHeadImg(errorCb,successCb){_getHeadImg.call(this,errorCb,successCb);}
 };
 
 module.exports = SubmissionHandler;
