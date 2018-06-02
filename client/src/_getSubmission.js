@@ -6,7 +6,7 @@ function _getSubmission(errorCb,successCb){
             console.log('_getSubmission sodaStart',data);
         
         if(data.error_code == '200'){
-            let handler = new SubmissionHandler(this._token,data.data.submission,this._models.app,this._models.wechat);
+            let handler = new SubmissionHandler(this._token,data.data.submission,this._models.app,this._models.wechat,this._statHandler);
 
             handler.debug = this._debug;
             
