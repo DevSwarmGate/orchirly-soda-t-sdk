@@ -13,7 +13,7 @@ function _drawCanvas(cb){
 
     let check = ()=>{
         imgCount +=1;
-        if(imgCount>1 && imgCount >= this._icon_imgs.length-1)
+        if(imgCount >= (this._icon_imgs.length + list.length) -1)
             cb();
     };
 
@@ -25,9 +25,6 @@ function _drawCanvas(cb){
 
     this._icon_imgs.forEach((img,index)=>{
         let isLast = false;
-
-        // if(index === this._icon_imgs.length-1)
-        //     isLast = true;
 
         requestAnimationFrame(()=>{
             draw(img,isLast);
