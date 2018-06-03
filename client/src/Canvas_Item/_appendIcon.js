@@ -10,13 +10,12 @@ function _appendIcon(src,option){
     icon.touchCb = this._handle_icon_select.bind(this);
     icon.deleteCb = (del_icon)=>{
         let icons = [];
+        this._deleteCb.bind(this);
         this._icons.forEach(icon=>{
-            console.log(icon);
             if(del_icon !== icon)
                 icons.push(icon);
         });
         this._icons = icons;
-        this._deleteCb.bind(this);
     };
 
     icon.appendCb = (icon)=>{
