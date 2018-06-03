@@ -10,7 +10,7 @@ function _appendIcon(src,option){
     icon.touchCb = this._handle_icon_select.bind(this);
     icon.deleteCb = (del_icon)=>{
         let icons = [];
-        this._deleteCb.bind(this);
+        this._deleteCb.call(this,del_icon);
         this._icons.forEach(icon=>{
             if(del_icon !== icon)
                 icons.push(icon);
