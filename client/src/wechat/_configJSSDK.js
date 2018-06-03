@@ -15,7 +15,8 @@ function _configJSSDK(errorCb,successCb){
         url +=`?sid=${this._urlParam.sid}`;
     
     if(this._urlParam.code)
-        window.history.replaceState({}, "afterAuth",url);
+        window.location = url;
+        //window.history.replaceState({}, "afterAuth",url);
 
     let config = ()=>{
         let jsApi={
