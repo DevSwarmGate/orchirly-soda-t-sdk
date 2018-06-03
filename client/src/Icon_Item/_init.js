@@ -12,6 +12,8 @@ function _init(){
         this._init_event();
         
         this._container.appendChild(this._dom);
+
+        this._appendCb(this);
     };
 
     img.src = this._imgSrc;

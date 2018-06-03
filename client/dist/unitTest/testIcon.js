@@ -100,6 +100,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 this._deleteCb = function () {
                     console.log('delete cb');
                 };
+                this._appendCb = function () {
+                    console.log('append cb');
+                };
 
                 this._init_option(option);
                 this._init();
@@ -191,6 +194,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 key: "_drawCanvas",
                 value: function _drawCanvas() {
                     _drawCanvas2.call(this);
+                }
+            }, {
+                key: "appendCb",
+                set: function set(cb) {
+                    this._appendCb = cb;
                 }
             }, {
                 key: "touchCb",
@@ -364,6 +372,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 _this2._init_event();
 
                 _this2._container.appendChild(_this2._dom);
+
+                _this2._appendCb(_this2);
             };
 
             img.src = this._imgSrc;

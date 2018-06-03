@@ -67,6 +67,7 @@ class Icon_Item{
         this._scaleCb = ()=>{console.log('scale cb');}
         this._rotateCb = ()=>{console.log('rotate cb');}
         this._deleteCb = ()=>{console.log('delete cb');}
+        this._appendCb = ()=>{console.log('append cb');}
 
         this._init_option(option);
         this._init();
@@ -74,6 +75,7 @@ class Icon_Item{
     /*-------------------
         getter and setter
     --------------------*/
+    set appendCb(cb){this._appendCb = cb;}
     set touchCb(cb){this._touchCb = cb;}
     set moveCb(cb){this._moveCb = cb;}
     set scaleCb(cb){this._scaleCb = cb;}
