@@ -30,6 +30,8 @@ function _getRank(errorCb,successCb){
                 let obj = parseRank(rank);
                 obj.rank = index+1;
                 res.rankList.push(obj);
+                if(data.mySubmission && (+data.mySubmission.sid) == (+rank.sid))
+                    res.nowRank = (+obj.rank);
             });
 
         successCb(res);
