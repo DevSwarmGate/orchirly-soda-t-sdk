@@ -9,6 +9,7 @@ function _appendIcon(src,option){
     icon._dom.style.top = '45%';
     icon.touchCb = this._handle_icon_select.bind(this);
     icon.deleteCb = this._deleteCb.bind(this);
+    icon.active = true;
 };
 
 module.exports = _appendIcon;
