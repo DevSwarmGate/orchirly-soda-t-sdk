@@ -14,6 +14,8 @@ function _configJSSDK(errorCb,successCb){
     if(this._urlParam.sid)
         url +=`?sid=${this._urlParam.sid}`;
     
+    if(this._urlParam.code)
+        window.history.replaceState({}, "afterAuth",url);
     // let init_statHandler=()=>{
     //     this._statHandler.onRequest=(fid,type,detail)=>{
     //         this._models.stat.request('addSubmission',{get:{fid:fid},post:{type:type,detail:detail}},(data)=>{
