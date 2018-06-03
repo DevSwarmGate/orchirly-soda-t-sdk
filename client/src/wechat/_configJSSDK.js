@@ -16,16 +16,6 @@ function _configJSSDK(errorCb,successCb){
     
     if(this._urlParam.code)
         window.history.replaceState({}, "afterAuth",url);
-    // let init_statHandler=()=>{
-    //     this._statHandler.onRequest=(fid,type,detail)=>{
-    //         this._models.stat.request('addSubmission',{get:{fid:fid},post:{type:type,detail:detail}},(data)=>{
-    //             if(this._debug)
-    //                 console.log('statHandler->addSubmission',data);
-    //         });
-    //     };
-
-    //     this._statHandler.markPV();
-    // };
 
     let config = ()=>{
         let jsApi={
@@ -38,7 +28,6 @@ function _configJSSDK(errorCb,successCb){
         };
 
         wx.config(jsApi);
-        //init_statHandler();
     };
 
     this._models.wechat.request('getJSApiConfig',{post:{url:url}},(data)=>{

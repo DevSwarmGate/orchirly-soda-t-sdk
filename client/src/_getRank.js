@@ -31,7 +31,7 @@ function _getRank(errorCb,successCb){
                 obj.rank = index+1;
                 res.rankList.push(obj);
                 if(data.mySubmission && (+data.mySubmission.sid) == (+rank.sid))
-                    res.nowRank = (+obj.rank);
+                    res.nowRank.rank = (+obj.rank);
             });
 
         successCb(res);
