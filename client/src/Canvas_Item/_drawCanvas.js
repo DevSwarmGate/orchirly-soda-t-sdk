@@ -13,7 +13,7 @@ function _drawCanvas(cb){
 
     let check = ()=>{
         imgCount +=1;
-        if(imgCount >= (this._icon_imgs.length + list.length) -1)
+        if(imgCount >= (this._icon_imgs.length + list.length))
             cb();
     };
 
