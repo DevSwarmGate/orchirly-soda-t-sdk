@@ -9,8 +9,11 @@ const API_LIST =[
 ];
 
 function _configJSSDK(errorCb,successCb){
-    let url = window.location.href.split('#')[0];
+    let url = window.location.origin+window.location.pathname;
 
+    if(this._urlParam.sid)
+        url +=`?sid=${this._urlParam.sid}`;
+    
     // let init_statHandler=()=>{
     //     this._statHandler.onRequest=(fid,type,detail)=>{
     //         this._models.stat.request('addSubmission',{get:{fid:fid},post:{type:type,detail:detail}},(data)=>{
